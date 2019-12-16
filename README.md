@@ -9,7 +9,7 @@ Install mysql:
 
 ## Setup mysql
 Create the database:
-`CREATE DATABASE mmfcg`
+`CREATE DATABASE mfcg`
 
 Create the user:
 `CREATE USER user_name@localhost IDENTIFIED BY user_password`
