@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600|Open+Sans:300,400,600|Oswald:300,400,500&display=swap');
+
+.bg-mma{
+background-color: #212529;
+font-family: 'Open Sans', sans-serif;
+font-weight: 100;
+color: #a59468;
+
+}
+.bg-mma a{
+	color: #a59468;
+}
+
+i {
+    color: #a59468;
+}
+
+
+
+
