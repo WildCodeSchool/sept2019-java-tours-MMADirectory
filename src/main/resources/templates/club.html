@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Club</title>
+</head>
+<body>
+<h3 th:text="${club.id} ? 'Edit Club' : 'Create Club'">Club</h3>
+<form method="post" th:action="@{/club}" th:object="${club}">
+    <input name="id" th:field="*{id}" type="hidden">
+    <label for="club-name">Name:</label>
+    <input id="club-name" name="name" placeholder="Name" required th:field="*{name}" type="text">
+    <br><br>
+    <label for="club-address">Address:</label>
+    <input id="club-address" name="address" placeholder="Address" required th:field="*{address}" type="text">
+    <br><br>
+    <label for="club-logo">Logo:</label>
+    <input id="club-logo" name="logo" placeholder="Logo" required th:field="*{logo}" type="text">
+    <br><br>
+    <label for="club-photo">Photos:</label>
+    <input id="club-photo" name="photo" placeholder="Photo" required th:field="*{photo}" type="text">
+    <br><br>
+    <label for="club-description">Description:</label>
+    <input id="club-description" name="description" placeholder="Description" required th:field="*{description}" type="text">
+    <br><br>
+    <label for="club-region">Region:</label>
+    <input id="club-region" name="region" placeholder="Region" required th:field="*{region}" type="text">
+    <br><br>
+
+    <input type="submit" value="Send">
+</form>
+<br>
+<a href="/">Return to the list</a>
+</body>
+</html>
