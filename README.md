@@ -3,11 +3,11 @@ Project 3 - Find a MMA Club next to you!
 
 The objectif is to propose an interactive map and let the user choose where he want to search a club.
 
-#How to install
+# How to install
 Install mysql:
 `sudo apt-get install mysql`
 
-##Setup mysql
+## Setup mysql
 Create the database:
 `CREATE DATABASE mmfcg`
 
