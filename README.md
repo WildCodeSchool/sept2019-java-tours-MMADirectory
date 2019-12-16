@@ -17,7 +17,7 @@ Create the user:
 Give the user all grants:
 `GRANT ALL ON mmfcg.* TO user_name@localhost`
 
-##Others settings
+## Others settings
 Java version 8 or higher
 
 Change the user_name and password in the application.properties' file
