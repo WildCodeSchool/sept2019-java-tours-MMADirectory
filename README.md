@@ -15,7 +15,7 @@ Create the user:
 `CREATE USER user_name@localhost IDENTIFIED BY user_password`
 
 Give the user all grants:
-`GRANT ALL ON mmfcg.* TO user_name@localhost`
+`GRANT ALL ON mfcg.* TO user_name@localhost`
 
 ## Others settings
 Java version 8 or higher
