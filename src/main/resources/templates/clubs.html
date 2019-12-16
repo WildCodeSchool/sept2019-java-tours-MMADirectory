@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Club List</title>
+</head>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 5px;
+        text-align: left;
+    }
+</style>
+<body>
+<h3>Clubs</h3>
+<a href="/club">Add a new club !</a>
+<br><br>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="club : ${clubs}">
+        <td th:text="${club.id}">id</td>
+        <td th:text="${club.name}">name</td>
+        <td th:text="${club.address}">address</td>
+
+        <td><a th:href="@{/club(id=${club.id})}">Edit</a></td>
+        <td><a th:href="@{/club/delete(id=${club.id})}">Remove</a></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+</body>
+</html>
