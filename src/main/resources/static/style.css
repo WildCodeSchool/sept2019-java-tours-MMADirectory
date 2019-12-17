@@ -8,12 +8,28 @@ color: #a59468;
 
 }
 .bg-mma a{
-	color: #a59468;
+color: #a59468;
 }
 
 i {
-    color: #a59468;
+color: #a59468;
 }
+.btn-mma {
+background-color: #a59468;
+}
+
+path, polygon {
+	stroke: #a59468;
+	stroke-width: 2;
+}
+path:hover, polygon:hover {
+	fill: #a59468; ;
+	stroke: #a59468;;
+}
+a.btn.btn-outline-dark:hover{
+	color: white;
+}
+
 
 
 
