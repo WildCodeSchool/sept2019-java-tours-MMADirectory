@@ -25,7 +25,7 @@
 <div class="row form-group">
 <div class="col-md-12 mx-4">
 <h3 th:text="${club.id} ? 'Edit Club' : 'Créer un club ou salle de sport'">Club</h3>
-<form method="post" th:action="@{/clubs}" th:object="${club}">
+<form method="post" th:action="@{/club}" th:object="${club}">
     <input name="id" th:field="*{id}" type="hidden" class="form-control">
     <label for="club-name" class="col-sm-2 col-form-label">Nom du club :</label>
     <input id="club-name" name="name" placeholder="Entrez le nom du club / salle de sport" required th:field="*{name}" type="text" class="form-control">
