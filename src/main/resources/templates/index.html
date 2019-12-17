@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimal-ui"/>
-    <title>Region</title>
-</head>
+<head th:replace="general:: head"></head>
 <body>
-<div class="map" id="map" style="width:50%">
-    <div class="map__img">
+<nav th:replace="general:: header"></nav>
+
+<div class="container my-4">
+<p class="text-center">Recherchez un club sportif par région</p>
+<div class="map row" id="map">
+	
+	
+    <div class="map__img m-auto col-12 p-4" style="height: 400px; width: 100%; display: block;">
+    
         <svg version="1.1" id="Régions_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="100%" height="100%" viewBox="-5.139 41.362 1000 960" enable-background="new -5.139 41.362 1000 960"
 	 xml:space="preserve">
 			<a th:href="@{/clubs(region=13)}">
-			<g id="Provence-Alpes-Côte-d_x27_Azur_3_">
+			<g class="region" id="Provence-Alpes-Côte-d_x27_Azur_3_">
 				<polygon fill="#FFF" stroke="#698782" stroke-width="0.75" stroke-miterlimit="10" points="677.523,707.705 676.632,708.966 
 					677.21,710.107 677.124,711.065 679.327,710.594 683.281,711.734 683.761,712.182 684.114,710.217 684.461,709.648 685.552,708.93 
 					685.257,708.129 686.104,707.084 686.35,705.441 688.269,705.059 689.429,703.917 689.467,703.248 687.883,703.357 686.873,702.49 
@@ -136,7 +139,7 @@
 			</g>
 			</a>
 			<a th:href="@{/clubs(region=12)}">
-			<g id="Pays_de_la_Loire_3_">
+			<g class="region" id="Pays_de_la_Loire_3_">
 				<polygon fill="#FFF" stroke="#698782" stroke-width="0.75" stroke-miterlimit="10" points="198.191,454.814 198.226,450.993 
 					197.524,449.791 195.672,448.812 193.276,447.482 192.596,447.438 192.3,446.865 192.466,445.63 192.251,445.387 191.625,445.566 
 					192.272,445.285 193.218,445.75 193.48,445.522 193.345,443.787 191.03,442.306 189.626,442.244 187.902,442.513 188.48,444.043 
@@ -278,7 +281,7 @@
 			</g>
 			</a>
 			<a th:href="@{/clubs(region=9)}">
-			<g id="Normandie_3_">
+			<g class="region"  id="Normandie_3_">
 				<polygon fill="#FFF" stroke="#698782" stroke-width="0.75" stroke-miterlimit="10" points="241.796,283.545 241.71,283.4 
 					241.528,283.471 241.589,283.6 241.691,283.603 	"/>
 				<polygon fill="#FFF" stroke="#698782" stroke-width="0.75" stroke-miterlimit="10" points="467.121,220.594 466.549,220.271 
@@ -546,7 +549,7 @@
 				632.271,165.061 632.509,163.818 633.552,163.001 633.626,162.381 634.01,158.361 "/>
 			</a>
 			<a th:href="@{/clubs(region=11)}">
-			<g id="Languedoc-Roussillon-Midi-Pyrénées_3_">
+			<g class="region" id="Languedoc-Roussillon-Midi-Pyrénées_3_">
 				<polygon fill="#FFF" stroke="#698782" stroke-width="0.75" stroke-miterlimit="10" points="336.039,815.457 336.427,815.946 
 					337.344,815.795 337.469,815.805 337.418,815.195 338.068,814.576 338.36,814.699 338.963,813.944 339.064,812.959 338.716,812.41 
 					338.032,811.713 338.407,810.055 337.057,809.273 336.466,809.436 336.167,810.02 335.655,811.173 335.137,811.566 
@@ -772,7 +775,7 @@
 				581.596,288.989 582.063,288.163 583.631,287.95 582.972,286.786 "/>
 			</a>
 			<a th:href="@{/clubs(region=5)}">
-			<g id="Corse_3_">
+			<g class="region" id="Corse_3_">
 				<polygon fill="#FFF" stroke="#698782" stroke-width="0.75" stroke-miterlimit="10" points="994.406,916.744 994.412,914.639 
 					994.544,913.582 994.861,910.564 994.442,908.934 993.685,906.033 993.541,905.178 993.182,903.049 993.011,901.059 
 					993.189,899.581 993.392,897.803 993.743,896.23 993.572,894.881 993.624,893.265 993.244,892.033 992.929,890.76 992.804,889.555 
@@ -977,7 +980,7 @@
 				554.612,351.887 555.121,351.496 555.741,351.516 556.296,349.896 557.296,348.992 557.321,348.301 "/>
 			</a>
 			<a th:href="@{/clubs(region=1)}">
-			<g id="Bretagne_3_">
+			<g class="region" id="Bretagne_3_">
 				<polygon fill="#FFF" stroke="#698782" stroke-width="0.75" stroke-miterlimit="10" points="109.925,381.449 106.869,380.518 
 					106.332,380.52 105.489,380.79 105.504,381.29 105.961,381.832 106.819,382.473 107.315,382.667 107.503,382.955 108.194,383.153 
 					108.925,383.66 109.105,383.66 109.974,383.43 110.551,383.02 110.954,383.354 111.308,383.415 111.688,383.785 112.054,382.461 
@@ -1548,7 +1551,7 @@
 				l1.197,1.133l0.854-0.42l-0.071,0.872l-0.287,0.167l0.349,1.27l0.962,0.166l1.01,0.867l1.584-0.109L689.429,703.917z"/>
 			</a>
 			<a th:href="@{/clubs(region=10)}">
-			<g id="Aquitaine-Limousin-Poitou-Charentes_3_">
+			<g class="region" id="Aquitaine-Limousin-Poitou-Charentes_3_">
 				<polygon fill="#FFF" stroke="#698782" stroke-width="0.75" stroke-miterlimit="10" points="275.241,676.863 275.462,676.678 
 					274.677,675.805 274.533,675.887 274.315,676.708 274.41,676.996 274.783,676.678 	"/>
 				<path fill="#FFF" stroke="#698782" stroke-width="0.75" stroke-miterlimit="10" d="M521.147,544.993l-0.248-0.929l0.351-1.895
@@ -1902,7 +1905,10 @@
 </a>
 
 		</svg>
+		<a class="btn btn-outline-dark mb-4"> <i class="fas fa-map-marker-alt"> </i> Rechercher autour de moi</a>
     </div>
 </div>
+</div>
+<footer th:replace="general:: footer"></footer>
 </body>
 </html>

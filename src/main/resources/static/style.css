@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600|Open+Sans:300,400,600|Oswald:300,400,500&display=swap');
+
+.bg-mma{
+background-color: #212529;
+font-family: 'Open Sans', sans-serif;
+font-weight: 100;
+color: #a59468;
+
+}
+.bg-mma a{
+color: #a59468;
+}
+
+i {
+color: #a59468;
+}
+.btn-mma {
+background-color: #a59468;
+}
+
+path, polygon {
+	stroke: #a59468;
+	stroke-width: 2;
+}
+path:hover, polygon:hover {
+	fill: #a59468; ;
+	stroke: #a59468;;
+}
+a.btn.btn-outline-dark:hover{
+	color: white;
+}
+
+
+
+
+

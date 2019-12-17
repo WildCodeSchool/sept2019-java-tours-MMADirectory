@@ -1,35 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Club</title>
-</head>
-<body>
-<h3 th:text="${club.id} ? 'Edit Club' : 'Create Club'">Club</h3>
-<form method="post" th:action="@{/club}" th:object="${club}">
-    <input name="id" th:field="*{id}" type="hidden">
-    <label for="club-name">Name:</label>
-    <input id="club-name" name="name" placeholder="Name" required th:field="*{name}" type="text">
-    <br><br>
-    <label for="club-address">Address:</label>
-    <input id="club-address" name="address" placeholder="Address" required th:field="*{address}" type="text">
-    <br><br>
-    <label for="club-logo">Logo:</label>
-    <input id="club-logo" name="logo" placeholder="Logo" required th:field="*{logo}" type="text">
-    <br><br>
-    <label for="club-photo">Photos:</label>
-    <input id="club-photo" name="photo" placeholder="Photo" required th:field="*{photo}" type="text">
-    <br><br>
-    <label for="club-description">Description:</label>
-    <input id="club-description" name="description" placeholder="Description" required th:field="*{description}" type="text">
-    <br><br>
-    <label for="club-region">Region:</label>
-    <input id="club-region" name="region" placeholder="Region" required th:field="*{region}" type="text">
-    <br><br>
+<html xmlns:th="http://www.thymeleaf.org">
 
-    <input type="submit" value="Send">
+<head th:replace="general:: head" ></head>
+
+
+<body>
+   <nav class="navbar navbar-expand-sm navbar-dark bg-mma">
+ 
+  <a class="navbar-brand mr-auto pl-2" href="#"><img th:src="logo.png" alt="logo mcf gym" style="height: 100px; width: auto; display: block; "></a>
+  <a class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"  aria-label="Toggle navigation">
+    <i class="fas fa-search "></i>
+  </a>
+     <div class="collapse navbar-collapse" id="navbarColor01">
+   <form class="form-inline ml-auto pr-2">
+      <input class="form-control " type="text" placeholder="Recherche">
+      <a class="btn  my-2 my-sm-0 text-white" type="button"><i class="fas fa-search"></i></a>
+    </form>
+
+  </div>
+
+
+</nav>
+<div class="container my-4 ">
+<div class="row form-group">
+<div class="col-md-12 mx-4">
+<h3 th:text="${club.id} ? 'Edit Club' : 'Créer un club ou salle de sport'">Club</h3>
+<form method="post" th:action="@{/clubs}" th:object="${club}">
+    <input name="id" th:field="*{id}" type="hidden" class="form-control">
+    <label for="club-name" class="col-sm-2 col-form-label">Nom du club :</label>
+    <input id="club-name" name="name" placeholder="Entrez le nom du club / salle de sport" required th:field="*{name}" type="text" class="form-control">
+
+    <label for="club-address" class="col-sm-2 col-form-label">Adresse :</label>
+    <input id="club-address" name="address" placeholder="Entrez ses coordonées" required th:field="*{address}" type="text" class="form-control">
+ 
+    <label for="club-logo" class="col-sm-2 col-form-label">Logo :</label>
+    <input id="club-logo" name="logo" placeholder="Ajouter le logo du club / salle de sport" required th:field="*{logo}" type="text" class="form-control">
+  
+    <label for="club-photo" class="col-sm-2 col-form-label">Photos :</label>
+    <input id="club-photo" name="photo" placeholder="Photo" required th:field="*{photo}" type="text" class="form-control">
+
+    <label for="club-description" class="col-sm-2 col-form-label">Description :</label>
+    <input id="club-description" name="description" placeholder="Ajouter une description rapide pour ce club" required th:field="*{description}" type="text" class="form-control">
+
+    <label for="club-region" class="col-sm-2 col-form-label">Region :</label>
+    <input id="club-region" name="region" placeholder="Entrez sa région" required th:field="*{region}" type="text" class="form-control">
+   
+
+    <input class="btn btn-mma text-white mt-4 text-center" type="submit" value="Ajouter">
 </form>
 <br>
-<a href="/">Return to the list</a>
+<a class="btn btn-outline-dark" href="/">Retourner à la liste</a>
+</div>
+</div>
+</div>
+ <footer th:replace="general :: footer"></footer>
+
 </body>
 </html>

@@ -1,32 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Club List</title>
-</head>
-<style>
-    table {
-        border-collapse: collapse;
-    }
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="general:: head" ></head>
 
-    th {
-        background-color: #4CAF50;
-        color: white;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    th, td {
-        border-bottom: 1px solid #ddd;
-        padding: 10px 5px;
-        text-align: left;
-    }
-</style>
 <body>
+<header th:replace="general:: header" ></header>
+<div class="container my-4">
+<div class="row">
+<div class="col-12">
 <h3>Clubs</h3>
-<a href="/club">Add a new club !</a>
+<a class="btn btn-dark text-white" th:href="@{/club}">Add a new club !</a>
 <br><br>
 <table>
     <thead>
@@ -50,5 +32,9 @@
     </tbody>
 </table>
 <br>
+</div>
+</div>
+</div>
+<footer th:replace="general:: footer" >></footer>
 </body>
 </html>
