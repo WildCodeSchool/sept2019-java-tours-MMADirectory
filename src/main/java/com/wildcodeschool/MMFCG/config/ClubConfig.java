@@ -14,23 +14,39 @@ public class ClubConfig extends WebSecurityConfigurerAdapter{
 	//Assignation des différents accès en fonction du rôle
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/clubs").permitAll();
+        http
+        .authorizeRequests()
+        .antMatchers("/listclub")
+        .permitAll();
         
-        http.authorizeRequests().antMatchers("/club").hasRole("admin")
-                .and()
-                .formLogin()
-                .and()
-                .httpBasic();
+        http
+        .authorizeRequests()
+        .antMatchers("/club")
+        .hasRole("admin")
+        .and()
+        .formLogin()
+        .and()
+        .httpBasic();
+        
+        http
+        .authorizeRequests()
+        .antMatchers("/clubs")
+        .hasRole("admin")
+        .and()
+        .formLogin()
+        .and()
+        .httpBasic();
     }
 	
 	//Création de l'admin et de son rôle 
 	@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        auth.inMemoryAuthentication()
-                .withUser("admin")
-                .password(encoder.encode("admin"))
-                .roles("admin");
+        auth
+        .inMemoryAuthentication()
+        .withUser("admin")
+        .password(encoder.encode("admin"))
+        .roles("admin");
                 
     }
 

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="general:: head" >
+
+</head>
+<body>
+<form th:action="@{/club/register}" th:object="${club}" method="post">
+     <input name="clubId" th:value="${club.id}" type="hidden">
+   
+    <label for="disciplines">Entrer une discipline:</label>
+    <select id="discipline" name="disciplineId">
+        <option th:each="discipline : ${allDisciplines}" th:text="${discipline.nom}"
+                th:value="${discipline.id}">
+        </option>
+    </select>
+    <input type="submit" value="Ajouter">
+</form>
+<h3>Disciplines :</h3>
+<table>
+    <thead>
+    <tr>
+       <th>id</th>
+        <th>Nom de la discipline: </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="discipline : ${disciplines}">
+        <td th:text="${discipline.id}">discipline</td>
+        <td th:text="${discipline.nom}">discipline</td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
