@@ -1,11 +1,16 @@
 package com.wildcodeschool.MMFCG.entity;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 //Table Club
@@ -26,7 +31,16 @@ public class Club {
 	@ManyToOne
     @JoinColumn(name ="FK_RegionId")
     private Region region;
-
+	
+	//relation avec la table discipline
+	
+	@ManyToMany
+    @JoinTable(name = "club_discipline",
+            joinColumns = @JoinColumn(name = "club_id"),
+            inverseJoinColumns = @JoinColumn(name = "discipline_id"))
+	private List<Discipline> disciplines = new ArrayList<>();
+	
+	
 	//Constructeur
 	public Club() {	
 	}
@@ -90,7 +104,16 @@ public class Club {
 		this.region = region;
 	}
 
+
+	public List<Discipline> getDisciplines() {
+		return disciplines;
+	}
+
+	public void setDisciplines(List<Discipline> disciplines) {
+		this.disciplines = disciplines;
+	}
 	
+
 	
 
 }
