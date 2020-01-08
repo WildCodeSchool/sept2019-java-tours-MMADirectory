@@ -15,7 +15,7 @@
                 <p class="card-text" th:text="${club.ville}">ville</p>
                 <p th:text="${club.logo}">logo</p>
 				<img th:text="${club.photo}" style="height: 200px; width: 100%; display: block;" src="mmfcg.jpg" alt="Card image">
-                <p class="card-text" th:text="${club.description}">description</p>
+            
                 <a class="btn btn-dark text-white m-auto" style="color: #a59468;" th:href="@{/club(id=${club.id})}">En savoir +</a>
                 <hr>
          
