@@ -16,26 +16,27 @@ public class ClubConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
-        .antMatchers("/listclub")
+        .antMatchers("/")
         .permitAll();
-        
+
         http
         .authorizeRequests()
-        .antMatchers("/club")
+        .antMatchers("/admin")
         .hasRole("admin")
         .and()
         .formLogin()
         .and()
         .httpBasic();
-        
+
         http
         .authorizeRequests()
-        .antMatchers("/clubs")
+        .antMatchers("/admin/*")
         .hasRole("admin")
         .and()
         .formLogin()
         .and()
         .httpBasic();
+
     }
 	
 	//Création de l'admin et de son rôle 

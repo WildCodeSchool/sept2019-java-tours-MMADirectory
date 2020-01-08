@@ -1,7 +1,7 @@
 package com.wildcodeschool.MMFCG.repository;
 
-import org.springframework.stereotype.Repository;
 import com.wildcodeschool.MMFCG.entity.Club;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

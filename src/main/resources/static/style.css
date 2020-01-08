@@ -30,7 +30,9 @@ a.btn.btn-outline-dark:hover{
 	color: white;
 }
 
-
-
+.add_club{
+	display: flex;
+	justify-content: center;
+}
 
 
