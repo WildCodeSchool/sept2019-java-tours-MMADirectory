@@ -27,7 +27,8 @@
                     <td th:text="${club.address}">address</td>
                     <td></td>
                     <td></td>
-                    <td><a class="btn" th:href="@{/admin/club/delete(id=${club.id})}"><i class="fas fa-trash"></i></a></td>
+                    <td><a class="btn " th:href="@{/admin/club/{id}/edit(id=${club.id})}"><i class="fas fa-pen"></i></a></td>
+                    <td><a class="btn " th:href="@{/admin/club/delete(id=${club.id})}"><i class="fas fa-trash"></i></a></td>
                 </tr>
                 </tbody>
             </table>

@@ -5,7 +5,7 @@
 
 </head>
 <body>
-<form th:action="@{/club/register}" th:object="${club}" method="post">
+<form th:action="@{/club/edit}" th:object="${club}" method="post">
      <input name="clubId" th:value="${club.id}" type="hidden">
    
     <label for="disciplines">Entrer une discipline:</label>

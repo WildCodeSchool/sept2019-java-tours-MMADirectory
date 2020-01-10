@@ -5,11 +5,16 @@ import com.wildcodeschool.MMFCG.entity.Region;
 import com.wildcodeschool.MMFCG.repository.ClubRepository;
 import com.wildcodeschool.MMFCG.repository.DisciplineRepository;
 import com.wildcodeschool.MMFCG.repository.RegionRepository;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 
 @Controller
@@ -31,7 +36,7 @@ public class AdminController {
 	}
 	
 	//Retourne le formulaire d'ajout de club
-	@GetMapping("/admin/edit")
+	@GetMapping("/admin")
 	@Secured("admin")
 	public String getClub(Model model){
 	
@@ -39,21 +44,20 @@ public class AdminController {
 	        
 	        model.addAttribute("club", club);
 	        //model.addAttribute("allDisciplines", disciplineRepository.findAll());
-		
-				
+					
 	        return "club";
 	}
-
+	
 	//Renvoie sur la liste mise a jour des clubs apres l'ajout d'un club
-	@PostMapping("/admin/edit")
+	@PostMapping("/admin")
 	public String postClub( @ModelAttribute Club club) {
 
 		repository.save(club);
-
-
 		return "redirect:/admin";
 
 	}
+	
+
 
 	//Supprime un club en fonction de son id puis renvoie la liste maj
     @GetMapping("/admin/club/delete")
@@ -63,10 +67,5 @@ public class AdminController {
 
         return "redirect:/admin";
     }
-    
-
-    
-   
-    
-  
+ 
 }

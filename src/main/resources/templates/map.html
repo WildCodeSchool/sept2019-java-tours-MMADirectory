@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="general:: head"></head>
 
 <body>
 
- <div th:fragment="map" class="map__img m-auto col-lg-6 col-12 " style="height: 500px; width: 100%; display: block;">
+ <div th:fragment="map"  class="map__img m-auto col-lg-6 col-12 " style="height: 500px; width: 100%; display: block;">
     
         <svg version="1.1" id="Régions_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="100%" height="100%" viewBox="-5.139 41.362 1000 960" enable-background="new -5.139 41.362 1000 960"
 	 xml:space="preserve">
-			<a th:href="@{/clubs(region=13)}">
+			<a th:href="@{/clubs(region=13)}" id="map">
 			<g class="region" id="Provence-Alpes-Côte-d_x27_Azur_3_">
 				<polygon fill="#FFF" stroke="#698782" stroke-width="0.75" stroke-miterlimit="10" points="677.523,707.705 676.632,708.966 
 					677.21,710.107 677.124,711.065 679.327,710.594 683.281,711.734 683.761,712.182 684.114,710.217 684.461,709.648 685.552,708.93 

@@ -24,7 +24,7 @@ path, polygon {
 }
 path:hover, polygon:hover {
 	fill: #a59468; ;
-	stroke: #a59468;;
+	stroke: #a59468;
 }
 a.btn.btn-outline-dark:hover{
 	color: white;

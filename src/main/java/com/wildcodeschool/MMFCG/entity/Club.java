@@ -18,6 +18,7 @@ public class Club {
 	private Long id;
 	private String name;
 	private String address;
+	private String ville;
 	private String logo;
 	private String photo;
 	private String description;
@@ -106,6 +107,14 @@ public class Club {
 
 	public void setDisciplines(List<Discipline> disciplines) {
 		this.disciplines = disciplines;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
 	}
 	
 
