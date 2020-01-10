@@ -15,4 +15,6 @@ public interface ClubRepository extends JpaRepository<Club, Long>{
 	
 	@Query("SELECT c FROM Club c WHERE fk_region_id=:region")
 	public List<Club> findByRegion(@Param("region")int region);
+	
+	
 }
