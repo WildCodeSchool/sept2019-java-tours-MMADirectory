@@ -9,7 +9,7 @@
 <div class="row">
 <div class="col-12">
 <h3>Clubs</h3>
-<a class="btn btn-dark text-white" th:href="@{/club}">Ajouter un club !</a>
+<a class="btn btn-dark text-white" th:href="@{/admin/create}">Ajouter un club !</a>
 <br><br>
 <table class="table">
     <thead>
@@ -27,8 +27,8 @@
         <td th:text="${club.name}">name</td>
         <td th:text="${club.address}">address</td>
 	    <td th:text="${club.photo}">photo</td>
-        <td><a class="btn btn-outline-dark" th:href="@{/club/edit(id=${club.id})}"><i class="fas fa-pencil-alt"></i></a></td>
-        <td><a class="btn btn-outline-dark" th:href="@{/club/delete(id=${club.id})}"><i class="fas fa-trash"></i></a></td>
+        <td><a class="btn btn-outline-dark" th:href="@{/admin/club/{id}/edit(id=${club.id})}"><i class="fas fa-pencil-alt"></i></a></td>
+        <td><a class="btn btn-outline-dark" th:href="@{/admin/club/delete(id=${club.id})}"><i class="fas fa-trash"></i></a></td>
     </tr>
     </tbody>
 </table>

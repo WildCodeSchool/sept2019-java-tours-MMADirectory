@@ -14,7 +14,7 @@
 <form method="post" th:action="@{/admin/edit}" th:object="${club}">
     <input name="id" th:field="*{id}" type="hidden">
 	<label for="club-name" class="col col-form-label">Nom du club :</label>
-	<input id="club-name" name="" placeholder="Entrez le nom du club" required th:field="*{name}" type="text" class="form-control"/>
+	<input id="club-name" name="name" placeholder="Entrez le nom du club" required th:field="*{name}" type="text" class="form-control"/>
 	
     <label for="club-address" class="col col-form-label">Adresse :</label>
     <input id="club-address" name="address" placeholder="Entrez ses coordonées" required th:field="*{address}" type="text" class="form-control">
@@ -36,8 +36,8 @@
     <input id="club-region" name="region" placeholder="Entrez sa région" required th:field="*{region}" type="text" class="form-control">
     <input class="btn btn-dark my-4" type="submit" value="Créer">
 
-
-
+</form>
+<hr>
 <a class="btn btn-outline-dark float-right mt-4" href="/admin">Retourner à la liste</a>
 </div>
 </div>
