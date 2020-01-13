@@ -14,7 +14,7 @@
                 <thead>
                 <tr>
                     <th scope="col">Nom du club :</th>
-                    <th scope="col">Adresse :</th>
+                    <th scope="col">Ville :</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
@@ -24,11 +24,11 @@
                 <tr class="table-active" th:each="club : ${clubs}">
 
                     <td th:text="${club.name}">name</td>
-                    <td th:text="${club.address}">address</td>
+                    <td th:text="${club.ville}">ville</td>
                     <td></td>
                     <td></td>
-                    <td><a class="btn " th:href="@{/admin/club/{id}/edit(id=${club.id})}"><i class="fas fa-pen"></i></a></td>
-                    <td><a class="btn " th:href="@{/admin/club/delete(id=${club.id})}"><i class="fas fa-trash"></i></a></td>
+                    <td><a class="btn " th:href="@{/admin/edit(id=${club.id})}"><i class="fas fa-pen"></i></a></td>
+                    <td><a class="btn " th:href="@{/admin/delete(id=${club.id})}"><i class="fas fa-trash"></i></a></td>
                 </tr>
                 </tbody>
             </table>

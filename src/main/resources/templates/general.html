@@ -8,6 +8,7 @@
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css}"/>
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css}" integrity="sha256-piqEf7Ap7CMps8krDQsSOTZgF+MU/0MPyPW2enj5I40=" crossorigin="anonymous" />
     <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css}" />
     <title>Annuaire sportif MMA - MFCGym</title>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
     
@@ -17,10 +18,10 @@
 <nav th:fragment="header" class="navbar navbar-expand-sm navbar-dark bg-mma">
 
     <a class="navbar-brand mr-auto pl-2" th:href="@{/}"><img th:src="logo.png" alt="logo mcf gym" style="height: 80px; width: auto; display: block; "></a>
-    <a class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"  aria-label="Toggle navigation">
+    <a class="navbar-toggler "  data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"  aria-label="Toggle navigation">
         <i class="fas fa-search "></i>
     </a>
-    <a class="btn navbar-toggler" type="button" data-toggle="collapse tooltip" th:href="@{https://www.mfcgym.fr}" 
+    <a class=" navbar-toggler"  data-toggle="collapse tooltip" th:href="@{https://www.mfcgym.fr}" 
                  title="Notre site web" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
                 aria-label="Toggle navigation">
                     <i class="fas fa-globe" ></i>
@@ -31,13 +32,13 @@
            
        
         <div style="position: absolute; right: 18rem;">
-            <a href="https://www.mfcgym.fr" class="btn collapse navbar-collapse" data-toggle="tooltip" title="Notre site web">
-                <i class="fas fa-globe pr-2" ></i>  Notre site web
+            <a href="https://www.mfcgym.fr" class="collapse navbar-collapse" data-toggle="tooltip" title="Notre site web">
+                <i class="fas fa-globe p-auto" ></i>  Notre site web
             </a>
         </div>
-        <form class="form-inline ml-auto pr-2" id="form-query"action="/search/discipline">
-            <input class="form-control" id="form-cb" type="text" placeholder="Recherche" name="discipline">
-            <button class="btn  my-2 my-sm-0"><i class="fas fa-search"></i></button>
+        <form class="form-inline ml-auto p-auto" id="form-query"action="/search/discipline">
+            <input class="form-control-sm mr-3" id="form-cb" type="text" placeholder="Recherche" name="discipline" style="flex:1">
+            <a class=" m-auto"><i class="fas fa-search m-auto"></i></a>
         </form>
     </div>
 
@@ -49,7 +50,7 @@
     <div class="container">
         <div class="row">
             <div class="col-3  btn ">
-                <a th:href="@{/mentions}" class="btn icone">Mentions légales - CGU </a>
+                <a th:href="@{/mentions}" class="btn icone">Mentions</a>
             </div>
             <div class="col-2  btn btn-default">
                 <a href="https://www.mfcgym.fr" class="btn"><i class="fas fa-globe icone" data-toggle="tooltip" title="Notre site web"></i></a>

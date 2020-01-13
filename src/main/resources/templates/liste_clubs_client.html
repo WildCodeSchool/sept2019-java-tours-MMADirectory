@@ -11,7 +11,7 @@
        
 
             <div class="col card border-dark  m-auto" style="max-width: 20rem;"  th:each="club : ${clubs}">
-                <h2 class="card-header" style="color: #a59468;" th:text="${club.name}">name</h2>
+                <h2 class="h2 my-3" style="color: #a59468;" th:text="${club.name}">name</h2>
                 <p class="card-text" th:text="${club.ville}">ville</p>
                 <p th:text="${club.logo}">logo</p>
 				<img th:text="${club.photo}" style="height: 200px; width: 100%; display: block;" src="mmfcg.jpg" alt="Card image">

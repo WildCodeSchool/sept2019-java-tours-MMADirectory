@@ -15,7 +15,8 @@ i {
 color: #a59468;
 }
 .btn-mma {
-background-color: #a59468;
+	
+-webkit-background-color: #a59468;
 }
 
 path, polygon {
