@@ -6,10 +6,14 @@ import com.wildcodeschool.MMFCG.entity.Region;
 import com.wildcodeschool.MMFCG.repository.ClubRepository;
 import com.wildcodeschool.MMFCG.repository.DisciplineRepository;
 import com.wildcodeschool.MMFCG.repository.RegionRepository;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -65,5 +69,7 @@ public class AdminController {
 
 	        return "redirect:/admin";
 	    }
+	    
+   
  
 }
