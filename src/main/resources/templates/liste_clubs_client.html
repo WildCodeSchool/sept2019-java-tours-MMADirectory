@@ -5,23 +5,19 @@
 <body>
 <header th:replace="general :: header" ></header>
 <div class="container my-4">
-
 <h1 >Clubs</h1>
-    <div class="row">
+  <div class="row m-auto">
+    
+      <div class="col-lg-4 card border-dark mx-auto my-3" style="max-width: 20rem; height: 450px;" th:each="club : ${clubs}">
+        <p class="h2 my-3 h5" style="color: #A59468;" th:text="${club.name}">name</p>
+        <p class="card-text" th:text="${club.ville}">ville</p>
+				<img style="height: 200px; width: 100%; display: block; " src="mmfcg.jpg" alt="Card image"> <br> <br>
        
-
-            <div class="col card border-dark  m-auto" style="max-width: 20rem;"  th:each="club : ${clubs}">
-                <h2 class="h2 my-3" style="color: #a59468;" th:text="${club.name}">name</h2>
-                <p class="card-text" th:text="${club.ville}">ville</p>
-                <p th:text="${club.logo}">logo</p>
-				<img th:text="${club.photo}" style="height: 200px; width: 100%; display: block;" src="mmfcg.jpg" alt="Card image">
-            
-                <a class="btn btn-dark text-white m-auto" style="color: #a59468;" th:href="@{/club(id=${club.id})}">En savoir +</a>
-
-                <hr>
-         
-        </div>
+        <a class="btn btn-dark text-white mx-auto " style="color: #A59468;" th:href="@{/club(id=${club.id})}">En savoir +</a>
+        <hr>
+     
     </div>
+  </div>
 </div>
 <footer th:replace="general:: footer" ></footer>
 </body>
