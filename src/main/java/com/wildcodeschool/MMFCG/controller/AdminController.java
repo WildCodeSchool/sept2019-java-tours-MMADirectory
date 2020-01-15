@@ -61,6 +61,50 @@ public class AdminController {
 
 		}
 
+
+
+
+
+
+		//----------------------------//
+		//Retourne le formulaire d'ajout de club
+		@GetMapping("/admin/modify")
+		@Secured("admin")
+		public String getClubById(Model model, @RequestParam long id){
+
+			Club club = new Club();
+			Discipline discipline = new Discipline();
+
+			model.addAttribute("club", repository.findById(id));
+			model.addAttribute("disciplines", disciplineRepository.findAll());
+
+			return "modifyClub";
+		}
+
+		//Renvoie sur la liste mise a jour des clubs apres l'ajout d'un club
+		@PostMapping("/admin/modify")
+		public String postClubById( @ModelAttribute Club club) {
+
+			repository.save(club);
+
+
+			return "redirect:/admin";
+
+		}
+
+
+
+		//-----------------------------//
+
+
+
+
+
+
+
+
+
+
 		//Supprime un club en fonction de son id puis renvoie la liste maj
 	    @GetMapping("/admin/delete")
 	    public String deleteClub(@RequestParam Long id) {

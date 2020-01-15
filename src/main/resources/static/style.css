@@ -1,44 +1,48 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600|Open+Sans:300,400,600|Oswald:300,400,500&display=swap');
-
-.bg-mma{
-background-color: #212529;
-font-family: 'Open Sans', sans-serif;
-font-weight: 100;
-color: #a59468;
-
+html {
+	height: 100%;
+}
+body {
+	position: relative;
+	min-height: 100%;
+	padding-bottom: 70px;
+}
+.bg-mma {
+	background-color: #212529;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 100;
+	color: #A59468;
 }
 .bg-mma a{
-color: #a59468;
+	color: #A59468;
 }
-
 i {
-color: #a59468;
+	color: #A59468;
 }
 .btn-mma {
-	
--webkit-background-color: #a59468;
+	-webkit-background-color: #A59468;
 }
-
 path, polygon {
-	stroke: #a59468;
+	stroke: #A59468;
 	stroke-width: 2;
 }
 path:hover, polygon:hover {
-	fill: #a59468; ;
-	stroke: #a59468;
+	fill: #A59468; ;
+	stroke: #A59468;
 }
-a.btn.btn-outline-dark:hover{
+a.btn.btn-outline-dark:hover {
 	color: white;
 }
-
-.add_club{
+.add_club {
 	display: flex;
 	justify-content: center;
 }
-
+#plgfrscroltwofrtoContainer .topUpTo {
+	display: none!important;
+}
 footer {
-  position: absolute;
-  height: auto;
-  bottom: -10;
-  width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }

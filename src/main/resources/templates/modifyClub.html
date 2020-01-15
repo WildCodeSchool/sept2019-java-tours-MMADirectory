@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="general:: head" >
+</head>
+
+
+<body>
+  
+<header th:replace="general:: header" ></header>
+<div class="container my-4 ">
+<div class="row form-group">
+<div class="col-md-12 mx-4">
+<h3>Club</h3>
+<form method="post" th:action="@{/admin/modify}" th:object="${club}">
+    <input name="id" th:field="*{id}" type="hidden">
+	<label for="club-name" class="col col-form-label">Nom du club :</label>
+	<input id="club-name" name="name" th:placeholder="${name}" required th:field="*{name}" type="text" class="form-control" th:value="${name}"/>
+	
+    <label for="club-address" class="col col-form-label">Adresse :</label>
+    <input id="club-address" name="address" placeholder="Entrez ses coordonées" required th:field="*{address}" type="text" class="form-control" th:value="${address}">
+    
+    <label for="club-ville" class="col col-form-label">Ville :</label>
+    <input id="club-ville" name="address" placeholder="Entrez la ville" required th:field="*{ville}" type="text" class="form-control" th:value="${ville}">
+    
+      <label for="club-photo" class="col col-form-label">photo :</label>
+    <input id="club-photo" name="address" placeholder="Ajouter une photo" required th:field="*{photo}" type="text" class="form-control">
+ 
+    <label for="club-logo" class="col col-form-label">Logo :</label>
+    <input id="club-logo" name="logo" placeholder="Ajouter le logo du club / salle de sport" required th:field="*{logo}" type="text" class="form-control" >
+  
+
+    <label for="club-description" class="col col-form-label">Description :</label>
+    <input id="club-description" name="description" placeholder="Ajouter sa description " required th:field="*{description}" type="text" class="form-control" th:value="${description}">
+
+    <label for="club-region" class="col col-form-label">Region :</label>
+    <input id="club-region" name="region" placeholder="Entrez sa région" required th:field="*{region}" type="text" class="form-control" th:value="${region}">
+    <input class="btn btn-dark my-4" type="submit" value="Modifier">
+
+</form>
+<hr>
+<a class="btn btn-outline-dark float-right mt-4" href="/admin">Retourner à la liste</a>
+</div>
+</div>
+</div>
+ <footer th:replace="general :: footer"></footer>
+
+</body>
+</html>
