@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @Controller
@@ -42,9 +43,8 @@ public class AdminController {
 		public String getClub(Model model){
 		
 		        Club club = new Club();
-				Discipline discipline = new Discipline();
-		        
 		        model.addAttribute("club", club);
+		        model.addAttribute("regions", regRepository.findAll());
 				model.addAttribute("disciplines", disciplineRepository.findAll());
 					
 		        return "club";
@@ -56,9 +56,7 @@ public class AdminController {
 
 			repository.save(club);
 
-
 			return "redirect:/admin";
-
 		}
 
 
