@@ -32,8 +32,16 @@
     <label for="club-description" class="col col-form-label">Description :</label>
     <input id="club-description" name="description" placeholder="Ajouter sa description " required th:field="*{description}" type="text" class="form-control">
 
+    <label for="club-discipline" class="col col-form-label">Discipline :</label>
+    <ul name="discipline" id="club-discipline">
+        <li th:each="discipline : ${disciplines}">
+            <input class="form-check-input" type="checkbox" th:text="${discipline.nom}" th:value="${discipline.id}" th:field="*{disciplines}"></li>
+    </ul>
+
     <label for="club-region" class="col col-form-label">Region :</label>
-    <input id="club-region" name="region" placeholder="Entrez sa région" required th:field="*{region}" type="text" class="form-control">
+    <select name="region" id="club-region" th:field="*{region}" class="form-control">
+        <option th:each="region : ${regions}" th:text="${region.name}" th:value="${region.id}"></option>
+    </select>
     <input class="btn btn-dark my-4" type="submit" value="Créer">
 
 </form>
