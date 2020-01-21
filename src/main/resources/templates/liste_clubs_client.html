@@ -4,14 +4,19 @@
 </head>
 <body>
 <header th:replace="general :: header" ></header>
-<div class="container my-4">
-<h1 >Clubs</h1>
-  <div class="row m-auto">
+<div class="container my-4 jumbotron">
+<h1 style="color: #A59468;" >Clubs</h1>
+  <div class="row m-auto ">
+  <div th:if="${clubs.empty}">
+  <p class="h4 my-4">Oh zut! Il n'y a pas encore de club sportif associé pour cette recherche.
+  </p>
+  <a class="btn btn-dark text-white mx-auto " style="color: #A59468;" th:href="@{/}">Retourner à l'accueil</a>
+  </div>
     
       <div class="col-lg-4 card border-dark mx-auto my-3" style="max-width: 20rem; height: 450px;" th:each="club : ${clubs}">
         <p class="h2 my-3 h5" style="color: #A59468;" th:text="${club.name}">name</p>
         <p class="card-text" th:text="${club.ville}">ville</p>
-				<img style="height: 200px; width: 100%; display: block; " src="mmfcg.jpg" alt="Card image"> <br> <br>
+				<img style="height: 200px; width: 100%; display: block; " src="img/mmfcg.jpg" alt="Card image"> <br> <br>
        
         <a class="btn btn-dark text-white mx-auto " style="color: #A59468;" th:href="@{/club(id=${club.id})}">En savoir +</a>
         <hr>
