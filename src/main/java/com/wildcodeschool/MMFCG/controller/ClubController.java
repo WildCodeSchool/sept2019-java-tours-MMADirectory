@@ -1,12 +1,15 @@
 package com.wildcodeschool.MMFCG.controller;
 
+
 import com.wildcodeschool.MMFCG.repository.ClubRepository;
 import com.wildcodeschool.MMFCG.repository.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.server.ResponseStatusException;
 
 
 
@@ -45,7 +48,15 @@ public class ClubController {
 	//Recherche de club par nom
 	@GetMapping("/search/club")
 	public String GetClubBySearch(Model model, @RequestParam String club){
+
+		if (club == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ce club n'existe pas.");
+		}
+	
 		model.addAttribute("clubs", repository.findByName(club));
 		return "liste_clubs_client";
+		
+		
 	}
+
 }

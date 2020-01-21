@@ -27,7 +27,7 @@ path, polygon {
 	stroke-width: 2;
 }
 path:hover, polygon:hover {
-	fill: #A59468; ;
+	fill: #A59468; 
 	stroke: #A59468;
 }
 a.btn.btn-outline-dark:hover {
@@ -45,4 +45,9 @@ footer {
 	bottom: 0;
 	left: 0;
 	right: 0;
+}
+a.text-mma{
+	color: #A59468;
+	font-size: 12px;
+	text-align: center;
 }
