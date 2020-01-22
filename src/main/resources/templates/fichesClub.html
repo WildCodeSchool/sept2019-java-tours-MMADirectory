@@ -15,8 +15,8 @@
 
 			<h2 class="text-center my-3" style="color: #a59468;" th:text="${fichesClub.name}">name</h2>
 			<div class="card-body ">
-				<p class="card-text" th:text="${fichesClub.logo}">logo</p>
-				<img class="img-responsive m-auto "  style="height: 400px; max-width: 100%; display: block;" src="mmfcg.jpg" alt="Card image">
+				<img class="card-text" th:src="@{${fichesClub.logo_url}}" style="width: 100px;position: absolute;top: 0;">
+				<img class="img-responsive m-auto "  style="height: 400px; max-width: 100%; display: block;" th:src="@{${fichesClub.photo_url}}" alt="Card image">
 
 				<p class="card-subtitle text-muted mt-3" th:text="${fichesClub.address}">address</p>
 				<p class="card-text" th:text="${fichesClub.ville}">ville</p>
