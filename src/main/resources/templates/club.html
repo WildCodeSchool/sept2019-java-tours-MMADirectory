@@ -21,9 +21,14 @@
     
     <label for="club-ville" class="col col-form-label">Ville :</label>
     <input id="club-ville" name="address" placeholder="Entrez la ville" required th:field="*{ville}" type="text" class="form-control">
-
-    <label for="club-photo" class="col col-form-label">photo :</label>
-    <input id="club-photo" name="address" placeholder="Ajouter une photo" required th:field="*{photo}" type="file" class="form-control">
+     	<div th:if="${photo.empty}">
+     	<img alt="icone photo" src="">
+     	</div>
+      <label for="club-photo" class="col col-form-label">photo :</label>
+    <input id="club-photo" name="address" placeholder="Ajouter une photo" required th:field="*{photo}" type="text" class="form-control">
+ 		
+ 		<div th:if="${logo.empty}">
+ 		</div>
 
     <label for="club-logo" class="col col-form-label">Logo :</label>
     <input id="club-logo" name="logo" placeholder="Ajouter le logo du club / salle de sport" required th:field="*{logo}" type="file" class="form-control">
@@ -32,9 +37,9 @@
     <label for="club-description" class="col col-form-label">Description :</label>
     <input id="club-description" name="description" placeholder="Ajouter sa description " required th:field="*{description}" type="text" class="form-control">
 
-    <label for="club-discipline" class="col col-form-label">Discipline :</label>
-    <ul name="discipline" id="club-discipline">
-        <li th:each="discipline : ${disciplines}">
+    <label for="club-discipline" class="col col-form-label ">Disciplines :</label>
+    <ul class="d-lg-flex justify-content-around flex-row" name="discipline" id="club-discipline">
+        <li  th:each="discipline : ${disciplines}">
             <input class="form-check-input" type="checkbox" th:text="${discipline.nom}" th:value="${discipline.id}" th:field="*{disciplines}"></li>
     </ul>
 
