@@ -14,13 +14,16 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Optional;
 
 
 @Controller
@@ -80,20 +83,26 @@ public class AdminController {
 		//Supprime un club en fonction de son id puis renvoie la liste maj
 	    @GetMapping("/admin/delete")
 	    public String deleteClub(@RequestParam Long id) {
-	    	Region region = new Region();
 	        repository.deleteById(id);
 
 	        return "redirect:/admin";
 	    }
 	    
-	    //Modifie un club en fonction de son id
-	    @GetMapping("/admin/update")
+	    //Récupère les infos d'un club en fonction de son id
+	    @GetMapping("/admin/modify")
 	    public String getClubUpdate(Model model,@RequestParam Long id) {
-	    	model.addAttribute("club", repository.findById(id));
-	    	return "update_club";
+			Optional<Club> club = repository.findById(id);
+			if(club.isPresent()) {
+				model.addAttribute("regions", regRepository.findAll());
+				model.addAttribute("club", club.get());
+				return "modifyClub";
+			}
+
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Le club n'existe pas !");
 	    }
-	    
-	    @PostMapping("/admin/update")
+
+	    //Enregistre les modifications d'un club
+	    @PostMapping("/admin/modify")
 		public String postClubUpdate( @ModelAttribute Club club) {
 	    	storageService.store(club.getLogo());
 	    	club.setLogo_url("/files/" + club.getLogo().getOriginalFilename());

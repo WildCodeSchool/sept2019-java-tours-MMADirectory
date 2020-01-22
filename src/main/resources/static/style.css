@@ -58,7 +58,13 @@ footer {
 
 .disciplines{
 	background: #a59468;
-	padding: 1rem;
+	padding: 0.5rem 1rem;
 	color: white;
 	margin-top: 1rem;
+}
+
+@media screen and (max-width: 990px ){
+	.logo{
+		display: none;
+	}
 }
