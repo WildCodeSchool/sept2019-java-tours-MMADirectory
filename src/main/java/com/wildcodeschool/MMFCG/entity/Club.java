@@ -3,6 +3,7 @@ package com.wildcodeschool.MMFCG.entity;
 
 import com.wildcodeschool.MMFCG.entity.Discipline;
 import com.wildcodeschool.MMFCG.entity.Region;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 //Table Club
 @Entity
 public class Club {
-	
+
 	//Champs de la table club
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,26 +20,32 @@ public class Club {
 	private String name;
 	private String address;
 	private String ville;
-	private String logo;
-	private String photo;
 	private String description;
-	
+	private String photo_url;
+	private String logo_url;
+
+	@Transient
+	private MultipartFile logo;
+
+	@Transient
+	private MultipartFile photo;
+
 	//Clé étrangère vers la table region
 	@ManyToOne
     @JoinColumn(name ="FK_RegionId")
     private Region region;
-	
+
 	//relation avec la table discipline
-	
+
 	@ManyToMany
     @JoinTable(name = "club_discipline",
             joinColumns = @JoinColumn(name = "club_id"),
             inverseJoinColumns = @JoinColumn(name = "discipline_id"))
 	private List<Discipline> disciplines = new ArrayList<>();
-	
-	
+
+
 	//Constructeur
-	public Club() {	
+	public Club() {
 	}
 
 	//Getter & Setter
@@ -66,20 +73,12 @@ public class Club {
 		this.address = address;
 	}
 
-	public String getLogo() {
+	public MultipartFile getLogo() {
 		return logo;
 	}
 
-	public void setLogo(String logo) {
-		this.logo = logo;
-	}
-
-	public String getPhoto() {
+	public MultipartFile getPhoto() {
 		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
 	}
 
 	public String getDescription() {
@@ -90,12 +89,12 @@ public class Club {
 		this.description = description;
 	}
 
-	
+
 	public Region getRegion() {
 		return region;
 	}
 
-	
+
 	public void setRegion(Region region) {
 		this.region = region;
 	}
@@ -116,8 +115,28 @@ public class Club {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
-	
 
-	
+	public String getPhoto_url() {
+		return photo_url;
+	}
 
+	public void setPhoto_url(String photo_url) {
+		this.photo_url = photo_url;
+	}
+
+	public String getLogo_url() {
+		return logo_url;
+	}
+
+	public void setLogo_url(String logo_url) {
+		this.logo_url = logo_url;
+	}
+
+	public void setLogo(MultipartFile logo) {
+		this.logo = logo;
+	}
+
+	public void setPhoto(MultipartFile photo) {
+		this.photo = photo;
+	}
 }

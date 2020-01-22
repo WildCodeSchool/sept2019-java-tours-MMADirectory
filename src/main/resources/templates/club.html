@@ -11,7 +11,7 @@
 <div class="row form-group">
 <div class="col-md-12 mx-4">
 <h3 th:text="${club.id} ? 'Edit Club' : 'Créer un club ou salle de sport'">Club</h3>
-<form method="post" th:action="@{/admin/edit}" th:object="${club}">
+<form method="post" th:action="@{/admin/edit}"  enctype="multipart/form-data" th:object="${club}">
     <input name="id" th:field="*{id}" type="hidden">
 	<label for="club-name" class="col col-form-label">Nom du club :</label>
 	<input id="club-name" name="name" placeholder="Entrez le nom du club" required th:field="*{name}" type="text" class="form-control"/>
@@ -21,13 +21,13 @@
     
     <label for="club-ville" class="col col-form-label">Ville :</label>
     <input id="club-ville" name="address" placeholder="Entrez la ville" required th:field="*{ville}" type="text" class="form-control">
-    
-      <label for="club-photo" class="col col-form-label">photo :</label>
-    <input id="club-photo" name="address" placeholder="Ajouter une photo" required th:field="*{photo}" type="text" class="form-control">
- 
+
+    <label for="club-photo" class="col col-form-label">photo :</label>
+    <input id="club-photo" name="address" placeholder="Ajouter une photo" required th:field="*{photo}" type="file" class="form-control">
+
     <label for="club-logo" class="col col-form-label">Logo :</label>
-    <input id="club-logo" name="logo" placeholder="Ajouter le logo du club / salle de sport" required th:field="*{logo}" type="text" class="form-control">
-  
+    <input id="club-logo" name="logo" placeholder="Ajouter le logo du club / salle de sport" required th:field="*{logo}" type="file" class="form-control">
+
 
     <label for="club-description" class="col col-form-label">Description :</label>
     <input id="club-description" name="description" placeholder="Ajouter sa description " required th:field="*{description}" type="text" class="form-control">
