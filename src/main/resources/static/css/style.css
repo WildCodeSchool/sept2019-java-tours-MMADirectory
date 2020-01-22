@@ -46,8 +46,26 @@ footer {
 	left: 0;
 	right: 0;
 }
+<<<<<<< HEAD:src/main/resources/static/css/style.css
 a.text-mma{
 	color: #A59468;
 	font-size: 12px;
 	text-align: center;
+=======
+
+.listDiscipline{
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+	margin: 0;
+	padding: 0;
+	flex-wrap: wrap;
+}
+
+.disciplines{
+	background: #a59468;
+	padding: 1rem;
+	color: white;
+	margin-top: 1rem;
+>>>>>>> dev:src/main/resources/static/style.css
 }

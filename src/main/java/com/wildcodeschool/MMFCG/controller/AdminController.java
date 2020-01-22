@@ -6,10 +6,15 @@ import com.wildcodeschool.MMFCG.entity.Region;
 import com.wildcodeschool.MMFCG.repository.ClubRepository;
 import com.wildcodeschool.MMFCG.repository.DisciplineRepository;
 import com.wildcodeschool.MMFCG.repository.RegionRepository;
+import com.wildcodeschool.MMFCG.storage.StorageFileNotFoundException;
+import com.wildcodeschool.MMFCG.storage.StorageService;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +34,14 @@ public class AdminController {
 	private DisciplineRepository disciplineRepository;
 
 
+    private StorageService storageService;
+
+    @Autowired
+    public void FileUploadController(StorageService storageService) {
+        this.storageService = storageService;
+    }
+
+    
 	//Retourne tous les clubs de la region admin
 		@RequestMapping("/admin")
 		public String getClubByRegion(Model model) {
@@ -42,17 +55,20 @@ public class AdminController {
 		public String getClub(Model model){
 		
 		        Club club = new Club();
-				Discipline discipline = new Discipline();
-		        
+
 		        model.addAttribute("club", club);
 				model.addAttribute("disciplines", disciplineRepository.findAll());
-					
+				model.addAttribute("regions", regRepository.findAll());
 		        return "club";
 		}
 
 		//Renvoie sur la liste mise a jour des clubs apres l'ajout d'un club
 		@PostMapping("/admin/edit")
 		public String postClub( @ModelAttribute Club club) {
+	    	storageService.store(club.getLogo());
+	    	club.setLogo_url("/files/" + club.getLogo().getOriginalFilename());
+	    	storageService.store(club.getPhoto());
+	    	club.setPhoto_url("/files/" + club.getPhoto().getOriginalFilename());
 
 			repository.save(club);
 
@@ -60,50 +76,6 @@ public class AdminController {
 			return "redirect:/admin";
 
 		}
-
-
-
-
-
-
-		//----------------------------//
-		//Retourne le formulaire d'ajout de club
-		@GetMapping("/admin/modify")
-		@Secured("admin")
-		public String getClubById(Model model, @RequestParam long id){
-
-			Club club = new Club();
-			Discipline discipline = new Discipline();
-
-			model.addAttribute("club", repository.findById(id));
-			model.addAttribute("disciplines", disciplineRepository.findAll());
-
-			return "modifyClub";
-		}
-
-		//Renvoie sur la liste mise a jour des clubs apres l'ajout d'un club
-		@PostMapping("/admin/modify")
-		public String postClubById( @ModelAttribute Club club) {
-
-			repository.save(club);
-
-
-			return "redirect:/admin";
-
-		}
-
-
-
-		//-----------------------------//
-
-
-
-
-
-
-
-
-
 
 		//Supprime un club en fonction de son id puis renvoie la liste maj
 	    @GetMapping("/admin/delete")
@@ -113,9 +85,36 @@ public class AdminController {
 
 	        return "redirect:/admin";
 	    }
-
-
 	    
-   
- 
+	    //Modifie un club en fonction de son id
+	    @GetMapping("/admin/update")
+	    public String getClubUpdate(Model model,@RequestParam Long id) {
+	    	model.addAttribute("club", repository.findById(id));
+	    	return "update_club";
+	    }
+	    
+	    @PostMapping("/admin/update")
+		public String postClubUpdate( @ModelAttribute Club club) {
+	    	storageService.store(club.getLogo());
+	    	club.setLogo_url("/files/" + club.getLogo().getOriginalFilename());
+	    	storageService.store(club.getPhoto());
+	    	club.setPhoto_url("/files/" + club.getPhoto().getOriginalFilename());
+
+			repository.save(club);
+			return "redirect:/admin";
+
+		}
+
+	    @ExceptionHandler(StorageFileNotFoundException.class)
+	    public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
+	        return ResponseEntity.notFound().build();
+	    }
+	    
+	    @GetMapping("/files/{filename:.+}")
+	    @ResponseBody
+	    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+	        Resource file = storageService.loadAsResource(filename);
+	        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+	                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+	    }
 }
