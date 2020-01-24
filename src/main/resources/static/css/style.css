@@ -22,6 +22,10 @@ i {
 .btn-mma {
 	-webkit-background-color: #A59468;
 }
+small {
+	font-weight: 100;
+	font-size: 12px;
+}
 path, polygon {
 	stroke: #A59468;
 	stroke-width: 2;
