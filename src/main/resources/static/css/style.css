@@ -7,6 +7,23 @@ body {
 	min-height: 100%;
 	padding-bottom: 70px;
 }
+
+a.navbar-brand.mr-auto.pl-2{
+	font-size: 12px;
+	color: #A59468;
+	text-align: center;
+
+}
+p.small {
+	color: #A59468;
+	font-size: 12px;
+	float: left;
+	margin-left: 30px;
+	padding-top: 15px;
+}
+i.fas.fa-globe.m-auto{
+	padding-left: 5px;
+}
 .bg-mma {
 	background-color: #212529;
 	font-family: 'Open Sans', sans-serif;
