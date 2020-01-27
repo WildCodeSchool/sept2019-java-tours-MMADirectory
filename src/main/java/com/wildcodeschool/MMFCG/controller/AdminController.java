@@ -113,10 +113,23 @@ public class AdminController {
 	    @PostMapping("/admin/modify")
 		public String postClubUpdate( @ModelAttribute Club club) {
 			Random rand =  new Random();
+			String[] splitedLogoName = club.getLogo().getOriginalFilename().split(".");
+			String splitedPhotoName = rand.nextInt(5000)+"."+club.getPhoto().getOriginalFilename();
 
-			String logoFilename = "logo." + club.getLogo().getOriginalFilename().split(".")[1];
-			String photoFilename = rand.nextInt(5000)+"."+club.getPhoto().getOriginalFilename().split(".")[1];
+			String logoFilename = "logo.";
 
+			if(splitedLogoName == null || splitedLogoName.length <2){
+				logoFilename += ".png";
+			}else{
+				logoFilename += splitedLogoName[1];
+			}
+
+			String photoFilename = "photo.";
+			if(splitedPhotoName == null || splitedPhotoName.length() <2){
+				logoFilename += ".png";
+			}else{
+				logoFilename += splitedPhotoName;
+			}
 			storageService.store(club.getLogo(), logoFilename , club.getId());
 			club.setLogo_url("/files/" + club.getId()+ "/"+ logoFilename);
 			storageService.store(club.getPhoto(),  photoFilename, club.getId());
