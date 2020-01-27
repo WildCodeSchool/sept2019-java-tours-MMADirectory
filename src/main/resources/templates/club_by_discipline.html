@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="general:: head" >
+</head>
+<body>
+<header th:replace="general:: header" ></header>
+	<ul>
+		<li th:each="club : ${discipline.clubs}">
+		<p th:text="${club.name}">
+		
+		</li>
+	</ul>
+
+</body>
+</html>
