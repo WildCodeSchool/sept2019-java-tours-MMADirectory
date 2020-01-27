@@ -7,7 +7,14 @@
 <div class="container my-4">
 <h1 >Clubs</h1>
   <div class="row m-auto">
-    
+
+      <div th:if="${clubs.isEmpty()}">
+        <img src="img/gym.svg" style="max-width: 20rem; height: 250px;" alt="illustration salle de sport">
+        <p class="h4 my-4" style="color: #A59468;">Il n'y a pas encore de club sportif associé à cette recherche.
+        </p>
+        <a class="btn btn-dark text-white mx-auto " style="color: #A59468;" th:href="@{/}">Retourner à l'accueil</a>
+      </div>
+
       <div class="col-lg-4 card border-dark mx-auto my-3" style="max-width: 20rem; height: 450px;" th:each="club : ${clubs}">
         <p class="h2 my-3 h5" style="color: #A59468;" th:text="${club.name}">name</p>
         <p class="card-text" th:text="${club.ville}">ville</p>
