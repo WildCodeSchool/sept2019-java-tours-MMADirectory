@@ -4,25 +4,31 @@
 <body>
 <nav th:replace="general:: header"></nav>
 
-<div class="container mt-3">
-<h1 class="text-center"style="color: #a59468;" >Bienvenue sur notre annuaire sportif MMA !</h1>
-<p class="card-text mt-3">Tu es à la recherche d'un club d'arts martiaux près de chez toi? 
-L'annuaire sportif MMA est un répertoire de clubs dont le but est de promouvoir l'activité du MMA en France. 
-Grace à notre map interactive, découvres facilement les clubs de ta région qui seront ravis de t'accueillir. </p>
+<div class="container mt-4">
+<div class="row">
+	<div class="col">
+		<h1 class="text-center mt-2"style="color: #a59468;" >Bienvenue sur notre annuaire sportif MMA !</h1>
+		<p class="card-text mt-3 p-auto">Tu es à la recherche d'un club d'arts martiaux près de chez toi?
+			L'annuaire sportif MMA est un répertoire de clubs dont le but est de promouvoir l'activité du MMA en France.
+			Grace à notre map interactive, découvres facilement les clubs de ta région qui seront ravis de t'accueillir. </p>
+		<a class="btn btn-outline-dark m-auto " onclick="alert('Bientôt disponible !')">  <i class="fab fa-searchengin"></i> Recherchez par discipline</a>
+		<p class="card-title p-auto h3 mt-2">Recherchez un club sportif par région :</p>
+	</div>
+</div>
 
-<p class="card-title p-auto h3">Recherchez un club sportif par région :</p>
-
-<a class="btn btn-outline-dark " onclick="alert('Bientôt disponnible !')"> <i class="fas fa-map-marker-alt"> </i> Géocalisez - moi !</a>
 
 <div class="map row" >
 
-	<div th:replace="map:: map"></div>	
-   
-    <div class="col-lg-6 col-12">
+	<div th:replace="map:: map">
+	</div>
+
+    <div class="col-lg-4 col-12 mb-4">
 	<ul class="list-group " th:each="region : ${regions}">
 		<li id="map" class="list-group-item justify-content-between align-items-center "><a id="map" class="float-left  text-dark" th:href="@{/clubs(region=${region.id})}" th:text="${region.name}"></a></li>
 	</ul>
+
 	</div>
+
 </div>
 </div>
 <footer th:replace="general:: footer"></footer>

@@ -27,6 +27,12 @@ public class ClubController {
 		return "index";
 	}
 
+	@GetMapping("/error")
+	public String error404() {
+
+		return "error";
+	}
+
 	
 	//Choix de la region utilisateur
 		@GetMapping("/clubs")
