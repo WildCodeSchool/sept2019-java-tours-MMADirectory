@@ -4,12 +4,16 @@
 </head>
 <body>
 <header th:replace="general:: header" ></header>
-	<ul>
-		<li th:each="club : ${discipline.clubs}">
-		<p th:text="${club.name}">
-		
-		</li>
-	</ul>
 
+<div class="col-lg-4 card border-dark mx-auto my-3" style="max-width: 20rem; height: 450px;" th:each="club : ${discipline.clubs}">
+	<p class="h2 my-3 h5" style="color: #A59468;" th:text="${club.name}">name</p>
+	<p class="card-text" th:text="${club.ville}">ville</p>
+	<img style="width: 100%; display: block;" th:src="@{${club.photo_url}}" alt="Card image"> <br> <br>
+
+	<a class="btn btn-dark text-white mx-auto " style="color: #A59468;" th:href="@{/club(id=${club.id})}">En savoir +</a>
+	<hr>
+
+</div>
+<footer th:replace="general:: footer" ></footer>
 </body>
 </html>
