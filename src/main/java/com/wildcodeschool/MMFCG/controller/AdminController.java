@@ -22,8 +22,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.thymeleaf.expression.Strings;
 
 import java.util.Optional;
+import java.util.Random;
 
 
 @Controller
@@ -38,9 +40,10 @@ public class AdminController {
 
 
     private StorageService storageService;
+	private Strings RandomStringUtils;
 
-    @Autowired
-    public void FileUploadController(StorageService storageService) {
+	@Autowired
+    public void AdminController(StorageService storageService) {
         this.storageService = storageService;
     }
 
@@ -68,14 +71,18 @@ public class AdminController {
 		//Renvoie sur la liste mise a jour des clubs apres l'ajout d'un club
 		@PostMapping("/admin/edit")
 		public String postClub( @ModelAttribute Club club) {
-	    	storageService.store(club.getLogo());
-	    	club.setLogo_url("/files/" + club.getLogo().getOriginalFilename());
-	    	storageService.store(club.getPhoto());
-	    	club.setPhoto_url("/files/" + club.getPhoto().getOriginalFilename());
+			Random rand =  new Random();
+			String logoFilename = "logo." + club.getLogo().getOriginalFilename().split("\\.")[1];
+			String photoFilename = rand.nextInt(5000)+"."+club.getPhoto().getOriginalFilename().split("\\.")[1];
+
+			club.setId(repository.save(club).getId());
+
+			storageService.store(club.getLogo(), logoFilename , club.getId());
+			club.setLogo_url("/files/" + club.getId()+ "/"+ logoFilename);
+			storageService.store(club.getPhoto(),  photoFilename, club.getId());
+			club.setPhoto_url("/files/" + club.getId()+ "/" + photoFilename);
 
 			repository.save(club);
-
-
 			return "redirect:/admin";
 
 		}
@@ -95,6 +102,7 @@ public class AdminController {
 			if(club.isPresent()) {
 				model.addAttribute("regions", regRepository.findAll());
 				model.addAttribute("club", club.get());
+				model.addAttribute("disciplines", disciplineRepository.findAll());
 				return "modifyClub";
 			}
 
@@ -104,10 +112,28 @@ public class AdminController {
 	    //Enregistre les modifications d'un club
 	    @PostMapping("/admin/modify")
 		public String postClubUpdate( @ModelAttribute Club club) {
-	    	storageService.store(club.getLogo());
-	    	club.setLogo_url("/files/" + club.getLogo().getOriginalFilename());
-	    	storageService.store(club.getPhoto());
-	    	club.setPhoto_url("/files/" + club.getPhoto().getOriginalFilename());
+			Random rand =  new Random();
+			String[] splitedLogoName = club.getLogo().getOriginalFilename().split(".");
+			String splitedPhotoName = rand.nextInt(5000)+"."+club.getPhoto().getOriginalFilename();
+
+			String logoFilename = "logo.";
+
+			if(splitedLogoName == null || splitedLogoName.length <2){
+				logoFilename += ".png";
+			}else{
+				logoFilename += splitedLogoName[1];
+			}
+
+			String photoFilename = "photo.";
+			if(splitedPhotoName == null || splitedPhotoName.length() <2){
+				logoFilename += ".png";
+			}else{
+				logoFilename += splitedPhotoName;
+			}
+			storageService.store(club.getLogo(), logoFilename , club.getId());
+			club.setLogo_url("/files/" + club.getId()+ "/"+ logoFilename);
+			storageService.store(club.getPhoto(),  photoFilename, club.getId());
+			club.setPhoto_url("/files/" + club.getId()+ "/" + photoFilename);
 
 			repository.save(club);
 			return "redirect:/admin";
@@ -119,11 +145,12 @@ public class AdminController {
 	        return ResponseEntity.notFound().build();
 	    }
 	    
-	    @GetMapping("/files/{filename:.+}")
+	    @GetMapping("/files/{clubId}/{filename:.+}")
 	    @ResponseBody
-	    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-	        Resource file = storageService.loadAsResource(filename);
+	    public ResponseEntity<Resource> serveFile(@PathVariable int clubId, @PathVariable String filename) {
+	        Resource file = storageService.loadAsResource(clubId + "/"+filename);
 	        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
 	                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
 	    }
+
 }

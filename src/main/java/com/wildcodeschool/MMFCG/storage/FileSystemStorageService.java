@@ -1,21 +1,17 @@
 package com.wildcodeschool.MMFCG.storage;
 
-import com.wildcodeschool.MMFCG.storage.StorageException;
-import com.wildcodeschool.MMFCG.storage.StorageFileNotFoundException;
-import com.wildcodeschool.MMFCG.storage.StorageProperties;
-import com.wildcodeschool.MMFCG.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
+import org.thymeleaf.expression.Strings;
+import org.thymeleaf.util.StringUtils;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.stream.Stream;
 
 
@@ -23,6 +19,7 @@ import java.util.stream.Stream;
 public class FileSystemStorageService implements StorageService {
 
     private final Path rootLocation;
+    private StringUtils RandomStringUtils;
 
     @Autowired
     public FileSystemStorageService(StorageProperties properties) {
@@ -30,14 +27,16 @@ public class FileSystemStorageService implements StorageService {
     }
 
     @Override
-    public void store(MultipartFile file) {
+    public void store(MultipartFile file, String filename,long id) {
         try {
             if (file.isEmpty()) {
                 throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
             }
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+            if(!Files.exists(this.rootLocation.resolve(""+id)))
+                Files.createDirectory(this.rootLocation.resolve(""+id));
+            Files.copy(file.getInputStream(), this.rootLocation.resolve(""+id+"/"+filename));
         } catch (IOException e) {
-            throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
+            throw new StorageException("Failed to store file " + file.getOriginalFilename() +"======="+ e.getMessage(), e);
         }
     }
 

@@ -7,40 +7,43 @@
     <base href="/">
     <meta property="og:description" content="Le MMA Fight Club Gym - Annuaire est destiné à la pratique du MMA - arts martiaux mixtes: boxe anglaise, boxe thaïlandaise, judo, karaté , grappling, lutte,
 	Jiu-jitsu brésilien, capoeira, taekwondo"/>
-	<meta name="description" content="Le MMA Fight Club Gym - Annuaire est destiné à la pratique du MMA - arts martiaux mixtes: boxe anglaise, boxe thaïlandaise, judo, karaté , grappling, lutte,
+    <meta name="keywords" content="Le MMA Fight Club Gym - Annuaire est destiné à la pratique du MMA - arts martiaux mixtes: boxe anglaise, boxe thaïlandaise, judo, karaté , grappling, lutte,
 	Jiu-jitsu brésilien, capoeira, taekwondo"/>
-	<meta name="robots" content="annuaire,club , tours , sport , défense , combat , mma , self-défense , boxe , boxe anglaise, boxe thaïlandaise, judo, karaté , grappling, lutte,
+    <meta name="description" content="Le MMA Fight Club Gym - Annuaire est destiné à la pratique du MMA - arts martiaux mixtes: boxe anglaise, boxe thaïlandaise, judo, karaté , grappling, lutte,
+	Jiu-jitsu brésilien, capoeira, taekwondo"/>
+    <meta name="robots" content="annuaire,club , tours , sport , défense , combat , mma , self-défense , boxe , boxe anglaise, boxe thaïlandaise, judo, karaté , grappling, lutte,
 	Jiu-jitsu brésilien, capoeira, taekwondo, autodéfense , self-contrôle." />
-	<meta name="googlebot" content="Annuaire, MMA, sport, club sportif, art martiaux" />
-    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css}"/>
-    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css}" integrity="sha256-piqEf7Ap7CMps8krDQsSOTZgF+MU/0MPyPW2enj5I40=" crossorigin="anonymous" />
-    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css}" />
+    <meta name="googlebot" content="Annuaire, MMA, sport, club sportif, art martiaux" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" integrity="sha256-piqEf7Ap7CMps8krDQsSOTZgF+MU/0MPyPW2enj5I40=" crossorigin="anonymous" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
     <title>Annuaire sportif MMA - MFCGym</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
-    
+
+
 </head>
 
 <body>
 <nav th:fragment="header" class="navbar navbar-expand-sm navbar-dark bg-mma">
 
-    <a class="navbar-brand mr-auto pl-2" th:href="@{/}"><img th:src="logo.png" alt="logo mcf gym" style="height: 80px; width: auto; display: block; "></a>
+    <a class="navbar-brand mr-auto pl-2" th:href="@{/}"><img th:src="@{/img/logo.png}" alt="logo mcf gym" style="height: 80px; width: auto; display: block; ">Annuaire</a>
+    <p class="small" >ANNUAIRE SPORTIF MMA</p>
     <a class="navbar-toggler "  data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"  aria-label="Toggle navigation">
         <i class="fas fa-search "></i>
     </a>
-    <a class=" navbar-toggler"  data-toggle="collapse tooltip" th:href="@{https://www.mfcgym.fr}" 
+    <a class=" navbar-toggler"  data-toggle="collapse tooltip" th:href="@{https://www.mfcgym.fr}"
        title="Notre site web" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
        aria-label="Toggle navigation">
-                    <i class="fas fa-globe" ></i>
+        <i class="fas fa-globe m-auto" ></i>
     </a>
-    
-    
+
+
     <div class="collapse navbar-collapse" id="navbarColor01">
-           
-       
+
+
         <div style="position: absolute; right: 18rem;">
             <a href="https://www.mfcgym.fr" class="collapse navbar-collapse" data-toggle="tooltip" title="Notre site web">
-                <i class="fas fa-globe p-auto" ></i>  Notre site web
+                <i class="fas fa-globe p-auto mr-2" ></i>  MMA FIGHT CLUB GYM
+
             </a>
         </div>
         <form class="form-inline ml-auto p-auto" id="form-query"action="/search/club">
@@ -51,7 +54,6 @@
 
 
 </nav>
-
 
 <footer th:fragment="footer" class="bg-mma page-footer font-small ">
     <div class="container">
@@ -75,12 +77,15 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/9c36ea5e86.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" th:src="@{/script.js}"></script>
+    <script th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
 </footer>
 
 </body>
 </html>
+
+
+
