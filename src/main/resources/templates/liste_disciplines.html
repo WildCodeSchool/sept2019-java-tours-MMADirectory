@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="general:: head" >
+</head>
+
+<body>
+<header th:replace="general:: header" ></header>
+	<ul style="display: flex;list-style: none;justify-content: center;margin-top: auto;flex-wrap:wrap;">
+		<li th:each="discipline : ${disciplines}" class="discipline">
+		<a th:href="@{/discipline/{id}(id=${discipline.id})}" th:text="${discipline.nom}" style="color: white;"></a>
+		</li>
+	</ul>
+<footer th:replace="general:: footer" ></footer>
+</body>
+</html>

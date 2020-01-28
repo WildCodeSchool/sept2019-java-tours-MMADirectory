@@ -80,6 +80,16 @@ footer {
 	margin-top: 1rem;
 }
 
+.discipline{
+	background: #a59468;
+	margin: 0.5rem 1rem;
+	padding: 1rem;
+	color: white;
+	text-align: center;
+	width: 11rem;
+
+}
+
 @media screen and (max-width: 990px ){
 	.logo{
 		display: none;

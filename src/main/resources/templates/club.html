@@ -21,10 +21,18 @@
     
     <label for="club-ville" class="col col-form-label">Ville :</label>
     <input id="club-ville" name="address" placeholder="Entrez la ville" required th:field="*{ville}" type="text" class="form-control">
+<<<<<<< HEAD
+     	<div th:if="${photo.empty}">
+     	<img alt="icone photo" src="">
+     	</div>
+      <label for="club-photo" class="col col-form-label">photo :</label>
+    <input id="club-photo" name="address" placeholder="Ajouter une photo"  th:field="*{photo}" type="text" class="form-control">
+=======
 
 
     <label for="club-photo" class="col col-form-label">photo :</label>
     <input id="club-photo" name="address" placeholder="Ajouter une photo"  th:field="*{photo}" type="file" class="form-control">
+>>>>>>> dev
  		
 
 
