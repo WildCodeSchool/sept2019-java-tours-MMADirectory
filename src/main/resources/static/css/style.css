@@ -90,8 +90,21 @@ footer {
 
 }
 
+#img_error{
+	margin: auto;
+	width: 20rem;
+}
+
 @media screen and (max-width: 990px ){
 	.logo{
+		display: none;
+	}
+
+	#img_error{
+		width: 100%;
+	}
+
+	#titre{
 		display: none;
 	}
 }

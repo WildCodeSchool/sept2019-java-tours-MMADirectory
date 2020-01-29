@@ -15,8 +15,8 @@
 
 			<h2 class="text-center my-3" style="color: #a59468;" th:text="${fichesClub.name}">name</h2>
 			<div class="card-body ">
-				<img class="card-text logo" th:src="@{${fichesClub.logo_url}}" style="width: 100px;position: absolute;top: 0;">
-				<img class="img-responsive m-auto "  style="width: 100%; display: block; " th:src="@{${fichesClub.photo_url}}" alt="Card image">
+				<img class="card-text logo mt-2" th:src="@{${fichesClub.logo_url}}" style="max-width:100px; width: 100px;position: absolute;top: 0;">
+				<img class="img-responsive"  style="max-width:840px;width: 100%; display: block; margin: 2rem auto" th:src="@{${fichesClub.photo_url}}" alt="Card image">
 
 				<p class="card-subtitle text-muted mt-3" th:text="${fichesClub.address}">address</p>
 				<p class="card-text" th:text="${fichesClub.ville}">ville</p>
@@ -24,7 +24,9 @@
 				<p th:text="${fichesClub.description}">description</p>
 				<hr>
 				<ul class="listDiscipline">
-					<li th:each="discipline : ${fichesClub.disciplines}" th:text="${discipline.nom}" class="disciplines"></li>
+					<li th:each="discipline : ${fichesClub.disciplines}" class="disciplines">
+						<a th:text="${discipline.nom}" th:href="@{/discipline/{id}(id=${discipline.id})}" style="color: white;"></a>
+					</li>
 				</ul>
 			</div>
 		</div>

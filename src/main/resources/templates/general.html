@@ -7,10 +7,10 @@
     <base href="/">
     <meta property="og:description" content="Le MMA Fight Club Gym - Annuaire est destiné à la pratique du MMA - arts martiaux mixtes: boxe anglaise, boxe thaïlandaise, judo, karaté , grappling, lutte,
 	Jiu-jitsu brésilien, capoeira, taekwondo"/>
-    <meta name="keywords" content="Le MMA Fight Club Gym - Annuaire est destiné à la pratique du MMA - arts martiaux mixtes: boxe anglaise, boxe thaïlandaise, judo, karaté , grappling, lutte,
-	Jiu-jitsu brésilien, capoeira, taekwondo"/>
-    <meta name="description" content="Le MMA Fight Club Gym - Annuaire est destiné à la pratique du MMA - arts martiaux mixtes: boxe anglaise, boxe thaïlandaise, judo, karaté , grappling, lutte,
-	Jiu-jitsu brésilien, capoeira, taekwondo"/>
+    <meta name="keywords" content="Le MMA Fight Club Gym - Annuaire est destiné à la pratique du MMA - arts martiaux mixtes: boxe anglaise, boxe thaïlandaise, karaté , grappling, lutte,
+	Jiu-jitsu brésilien, capoeira"/>
+    <meta name="description" content="Le MMA Fight Club Gym - Annuaire est destiné à la pratique du MMA - arts martiaux mixtes: boxe anglaise, boxe thaïlandaise, karaté , grappling, lutte,
+	Jiu-jitsu brésilien, capoeira"/>
     <meta name="robots" content="annuaire,club , tours , sport , défense , combat , mma , self-défense , boxe , boxe anglaise, boxe thaïlandaise, judo, karaté , grappling, lutte,
 	Jiu-jitsu brésilien, capoeira, taekwondo, autodéfense , self-contrôle." />
     <meta name="googlebot" content="Annuaire, MMA, sport, club sportif, art martiaux" />
@@ -26,8 +26,8 @@
 <body>
 <nav th:fragment="header" class="navbar navbar-expand-sm navbar-dark bg-mma">
 
-    <a class="navbar-brand mr-auto pl-2" th:href="@{/}"><img th:src="@{/img/logo.png}" alt="logo mcf gym" style="height: 80px; width: auto; display: block; ">Annuaire</a>
-    <p class="small" >ANNUAIRE SPORTIF MMA</p>
+    <a class="navbar-brand mr-auto pl-2" th:href="@{/}"><img th:src="@{/img/logo.png}" alt="logo mcf gym" style="height: 80px; width: auto; display: block; "></a>
+    <p class="small" id="titre">ANNUAIRE SPORTIF MMA</p>
     <a class="navbar-toggler "  data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"  aria-label="Toggle navigation">
         <i class="fas fa-search "></i>
     </a>
@@ -42,7 +42,7 @@
 
 
         <div style="position: absolute; right: 18rem;">
-            <a href="https://www.mfcgym.fr" class="collapse navbar-collapse" data-toggle="tooltip" title="Notre site web">
+            <a href="https://www.mfcgym.fr" target="_blank" class="collapse navbar-collapse" data-toggle="tooltip" title="Notre site web">
                 <i class="fas fa-globe p-auto mr-2" ></i>  MMA FIGHT CLUB GYM
 
             </a>
@@ -60,13 +60,13 @@
     <div class="container">
         <div class="row">
             <div class="col-3  btn ">
-                <a th:href="@{/mentions}" class="btn icone">Mentions</a>
+                <a th:href="@{/mentions}" class="btn icone"><i class="fas fa-file-alt icone" data-toggle="tooltip" title="Mentions légales"></i></a>
             </div>
             <div class="col-2  btn btn-default">
-                <a href="https://www.mfcgym.fr" class="btn"><i class="fas fa-globe icone" data-toggle="tooltip" title="Notre site web"></i></a>
+                <a href="https://www.mfcgym.fr" class="btn" target="_blank"><i class="fas fa-globe icone" data-toggle="tooltip" title="Notre site web"></i></a>
             </div>
             <div class="col-2  btn btn-default">
-                <p class="btn"><i class="fas fa-map-marker-alt icone" data-toggle="tooltip" title="MMA FIGHT CLUB GYM 225 Boulevard Charles de Gaulle 37540 Saint-Cyr-Sur-Loire "></i></p>
+                <a class="btn" href="https://www.facebook.com/evokm37/" target="_blank"><i class="fab fa-facebook-f icone" data-toggle="tooltip" title="Notre Facebook"></i></a>
             </div>
             <div class="col-2  btn btn-default">
                 <p class="btn"><i class="fas fa-phone icone" data-toggle="tooltip" title="07 77 86 95 65"></i></p>
