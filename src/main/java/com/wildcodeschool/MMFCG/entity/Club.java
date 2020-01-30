@@ -23,6 +23,9 @@ public class Club {
 	private String description;
 	private String photo_url;
 	private String logo_url;
+	private String socialUrl;
+	private String postalCode;
+	private String phoneNumber;
 
 	@Transient
 	private MultipartFile logo;
@@ -49,6 +52,31 @@ public class Club {
 	}
 
 	//Getter & Setter
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+	
+
+	public String getSocialUrl() {
+		return socialUrl;
+	}
+
+	public void setSocialUrl(String socialUrl) {
+		this.socialUrl = socialUrl;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
 	public Long getId() {
 		return id;
 	}
