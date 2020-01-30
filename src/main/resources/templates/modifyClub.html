@@ -21,6 +21,15 @@
     
     <label for="club-ville" class="col col-form-label">Ville :</label>
     <input id="club-ville" name="address" placeholder="Entrez la ville" required th:field="*{ville}" type="text" class="form-control" th:value="${ville}">
+    
+    <label for="club-postalCode" class="col col-form-label">Code Postal :</label>
+    <input id="club-postalCode" name="postalCode" placeholder="Entrez le code Postal" required th:field="*{postalCode}" type="text" class="form-control" th:value="${postalCode}">
+
+	<label for="club-phoneNumber" class="col col-form-label">Téléphone :</label>
+    <input id="club-phoneNumber" name="phoneNumber" placeholder="Entrez le numéro de téléphone" required th:field="*{phoneNumber}" type="text" class="form-control" th:value="${phoneNumber}">
+
+	<label for="club-socialUrl" class="col col-form-label">Social :</label>
+    <input id="club-socialUrl" name="socialUrl" placeholder="Entrez le site internet commencant par http://" required th:field="*{socialUrl}" type="text" class="form-control" th:value="${socialUrl}">
 
     <label for="club-photo" class="col col-form-label">photo :</label>
     <input id="club-photo" name="address" placeholder="Ajouter une photo" required th:field="*{photo}" type="file" class="form-control">
