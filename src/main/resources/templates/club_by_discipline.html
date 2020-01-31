@@ -18,7 +18,7 @@
 			<p class="h2 my-3 h5" style="color: #A59468;" th:text="${club.name}">name</p>
 			<p class="card-text" th:text="${club.ville}">ville</p>
 			<p class="card-text" th:text="${club.postalCode}"></p>
-			<img style="width: 100%; display: block;" th:src="@{${club.photo_url}}" alt="Card image"> <br> <br>
+			<img style="width: 100%; display: block;" th:src="@{${club.photo1_url}}" alt="Card image"> <br> <br>
 
 			<a class="btn btn-dark text-white mx-auto " style="color: #A59468;" th:href="@{/club(id=${club.id})}">En savoir +</a>
 			<hr>
