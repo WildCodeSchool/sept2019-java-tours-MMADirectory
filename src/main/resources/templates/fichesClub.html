@@ -23,7 +23,8 @@
 				<p class="card-text" th:text="${fichesClub.postalCode}"></p>
 				<p class="card-text" th:text="${fichesClub.phoneNumber}"></p>
 				<a class="card-text" th:text="|Site du Club|" target="blank_" th:href="@{${fichesClub.socialUrl}}"></a>
-
+				<p class="card-text" th:text="${fichesClub.valide}"></p>
+				
 				<p th:text="${fichesClub.description}">description</p>
 				<hr>
 				<ul class="listDiscipline">

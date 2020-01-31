@@ -1,15 +1,20 @@
 package com.wildcodeschool.MMFCG.controller;
 
+import com.wildcodeschool.MMFCG.entity.Club;
 import com.wildcodeschool.MMFCG.entity.Discipline;
 import com.wildcodeschool.MMFCG.repository.ClubRepository;
 import com.wildcodeschool.MMFCG.repository.DisciplineRepository;
 import com.wildcodeschool.MMFCG.repository.RegionRepository;
+
+import javassist.expr.NewArray;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -76,6 +81,20 @@ public class ClubController {
 			return "club_by_discipline";
 		}
 		throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Le club n'existe pas !");
+	}
+	
+	@GetMapping("/register")
+	public String displayRegister (Model model) {
+		model.addAttribute("club", new Club());
+		model.addAttribute("regions", regRepository.findAll());
+		model.addAttribute("disciplines", disciplineRepository.findAll());
+		return "register";
+	}
+	
+	@PostMapping("/register")
+	public String postRegister (Club club) {
+		repository.save(club);
+		return "valide";
 	}
 	
 }

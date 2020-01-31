@@ -26,7 +26,9 @@ public class Club {
 	private String socialUrl;
 	private String postalCode;
 	private String phoneNumber;
+	private boolean valide;
 
+	
 	@Transient
 	private MultipartFile logo;
 
@@ -49,9 +51,19 @@ public class Club {
 
 	//Constructeur
 	public Club() {
+		this.setValide(false);
 	}
 
 	//Getter & Setter
+	
+	public boolean isValide() {
+		return valide;
+	}
+
+	public void setValide(boolean valide) {
+		this.valide = valide;
+	}
+
 	public String getPostalCode() {
 		return postalCode;
 	}
