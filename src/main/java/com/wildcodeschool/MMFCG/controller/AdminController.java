@@ -40,7 +40,6 @@ public class AdminController {
 
 
     private StorageService storageService;
-	private Strings RandomStringUtils;
 
 	@Autowired
     public void AdminController(StorageService storageService) {
@@ -84,7 +83,6 @@ public class AdminController {
 
 			repository.save(club);
 			return "redirect:/admin";
-
 		}
 
 		//Supprime un club en fonction de son id puis renvoie la liste maj
@@ -139,6 +137,42 @@ public class AdminController {
 			return "redirect:/admin";
 
 		}
+		@GetMapping("/admin/waiting")
+		public String waitingClubs(Model model){
+			model.addAttribute("clubs", repository.findAllFalse());
+			return "waiting_clubs";
+		}
+
+
+		@GetMapping("/admin/valid/{id}")
+		public String getClubValid(@PathVariable long id, Model model){
+		Optional<Club> club = repository.findById(id);
+		if(club.isPresent()){
+			model.addAttribute("club", club.get());
+			return "waiting_club_detail";
+		}
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Le club n'existe pas !");
+		}
+
+		@PostMapping("/admin/valid/{id}")
+		public String postClubValid(@PathVariable long id, @ModelAttribute Club club){
+			club.setValide(true);
+			repository.save(club);
+			return "redirect:/admin/waiting";
+		}
+
+		@GetMapping("/admin/unvalid/{id}")
+		public String unvalidClub(@PathVariable long id){
+			repository.deleteById(id);
+			return "redirect:/admin/waiting";
+		}
+
+
+
+
+
+
+
 
 	    @ExceptionHandler(StorageFileNotFoundException.class)
 	    public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
@@ -152,5 +186,7 @@ public class AdminController {
 	        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
 	                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
 	    }
+
+
 
 }

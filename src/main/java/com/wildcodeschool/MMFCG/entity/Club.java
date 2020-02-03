@@ -51,7 +51,6 @@ public class Club {
 
 	//Constructeur
 	public Club() {
-		this.setValide(false);
 	}
 
 	//Getter & Setter

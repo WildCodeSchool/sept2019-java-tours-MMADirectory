@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="general:: head" >
+</head>
+
+
+<body>
+
+<header th:replace="general:: header" ></header>
+<div class="container my-4">
+    <div class="row">
+        <div class="col-12">
+            <h3>Administration des clubs</h3>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Nom du club :</th>
+                    <th scope="col">Ville :</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="table-active" th:each="club : ${clubs}">
+
+                    <td><a th:href="@{/admin/valid/{id}(id=${club.id})}" th:text="${club.name}"></a></td>
+                    <td th:text="${club.ville}">ville</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+        </div>
+    </div>
+    <div class="add_club">
+        <a class="btn" th:href="@{/admin/edit}" style="font-size: 2rem;color: #a59468;">Ajouter un club <i class="fas fa-plus"></i></a>
+    </div>
+</div>
+
+<footer th:replace="general :: footer"></footer>
+
+</body>
+</html>

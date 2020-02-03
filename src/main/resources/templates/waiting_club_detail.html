@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="general:: head" >
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimal-ui"/>
+    <title>Region</title>
+</head>
+	<body>
+	<header th:replace="general:: header"></header>
+	<div class="container my-4">
+	<div class="row">
+		<div class="col card border-dark  m-auto" style="max-width: 80%;" >
+
+
+			<h2 class="text-center my-3" style="color: #a59468;" th:text="${club.name}">name</h2>
+			<div class="card-body ">
+				<img class="card-text logo mt-2" th:src="@{${club.logo_url}}" style="max-width:100px; width: 100px;position: absolute;top: 0;">
+				<img class="img-responsive"  style="max-width:840px;width: 100%; display: block; margin: 2rem auto" th:src="@{${club.photo_url}}" alt="Card image">
+
+				<p class="card-subtitle text-muted mt-3" th:text="${club.address}">address</p>
+				<p class="card-text" th:text="${club.ville}"></p>
+				<p class="card-text" th:text="${club.postalCode}"></p>
+				<p class="card-text" th:text="${club.phoneNumber}"></p>
+				<a class="card-text" th:text="|Site du Club|" target="blank_" th:href="@{${club.socialUrl}}"></a>
+				<p class="card-text" th:text="${club.valide}"></p>
+				
+				<p th:text="${club.description}">description</p>
+				<hr>
+				<ul class="listDiscipline">
+					<li th:each="discipline : ${club.disciplines}" class="disciplines">
+						<a th:text="${discipline.nom}" th:href="@{/discipline/{id}(id=${discipline.id})}" style="color: white;"></a>
+					</li>
+				</ul>
+				<hr>
+				<form th:object="${club}" th:action="@{/admin/valid/{id}(id=${club.id})}" method="post">
+					<input type="hidden" th:field="*{id}">
+					<input type="hidden" th:field="*{address}">
+					<input type="hidden" th:field="*{phoneNumber}">
+					<input type="hidden" th:field="*{photo_url}">
+					<input type="hidden" th:field="*{logo_url}">
+					<input type="hidden" th:field="*{ville}">
+					<input type="hidden" th:field="*{description}">
+					<input type="hidden" th:field="*{postalCode}">
+					<input type="hidden" th:field="*{socialUrl}">
+					<input type="hidden" th:field="*{name}">
+					<input type="hidden" th:field="*{region}">
+					<input type="hidden" th:field="*{disciplines}">
+
+					<input type="checkbox" id="valide" th:field="*{valide}" checked style="display: none">
+					<input class="btn btn-dark my-4" type="submit" value="Valider">
+					<a class="btn btn-dark my-4" th:href="@{/admin/unvalid/{id}(id=${club.id})}" th:text="|Refuser|"></a>
+				</form>
+			</div>
+		</div>
+
+	</div>
+	</div>
+        
+         <footer th:replace="general :: footer"></footer>
+
+	</body>
+</html>
