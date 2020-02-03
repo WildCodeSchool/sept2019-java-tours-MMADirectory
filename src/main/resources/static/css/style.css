@@ -97,16 +97,21 @@ footer {
 
 .carousel-control-next, .carousel-control-prev{
 	right: 0;
-	background: rgba(80, 80, 80, 1);
-	width: 6%;
+	width: 2%;
+
+
 }
 
 .carousel-control-prev:hover, .carousel-control-next:hover {
 	right: 0;
-	background: rgba(40, 40, 40, 1);
-	width: 6%;
+	width: 2%;
 }
 
+.carousel-inner{
+	-webkit-box-shadow: 10px 10px 10px 5px rgba (163,158,163,1);
+	-moz-box-shadow: 10px 10px 10px 5px rgba (163,158,163,1);
+	shadow-box: 10px 10px 10px 5px rgba (163,158,163,1);
+}
 
 
 @media screen and (max-width: 990px ){

@@ -16,7 +16,7 @@
     <tr>
         <th scope="col">Nom du club :</th>
         <th scope="col">Adresse :</th>
-        <th scope="col">Photo</th>
+        <th scope="col">Photo teset</th>
         <th scope="col"></th>
         <th scope="col"></th>
     </tr>
@@ -28,7 +28,7 @@
         <td th:text="${club.address}">address</td>
 	    <td th:text="${club.photo}">photo</td>
         <td><a class="btn btn-outline-dark" th:href="@{/admin/modify(id=${club.id})}"><i class="fas fa-pencil-alt"></i></a></td>
-        <td><a  class="btn btn-outline-dark" onclick="return alert('Etes-vous sûr de vouloir supprimer ce club ?')" th:href="@{/admin/delete(id=${club.id})}"><i class="fas fa-trash"></i></a></td>
+        <td><a   class="btn btn-outline-dark" ><i  class="fas fa-trash"></i></a></td>
     </tr>
     </tbody>
 </table>

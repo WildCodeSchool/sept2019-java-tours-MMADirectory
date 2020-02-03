@@ -5,11 +5,22 @@
 
 <body>
 <header th:replace="general:: header" ></header>
-	<ul style="display: flex;list-style: none;justify-content: center;margin-top: auto;flex-wrap:wrap;padding: 0;">
-		<li th:each="discipline : ${disciplines}" class="discipline">
-		<a th:href="@{/discipline/{id}(id=${discipline.id})}" th:text="${discipline.nom}" style="color: white;"></a>
-		</li>
-	</ul>
+<div class="container jumbotron">
+	<div class="row ">
+		<div class="col">
+			<hr>
+			<h2 class="my-4 text-center">Sélectionnez une discipline pour trouver les clubs sportifs correspondants </h2>
+			<hr>
+			<ul class="mt-4 card-body" style="display: flex;list-style: none;justify-content: center;margin-top: auto;flex-wrap:wrap;padding: 0;">
+				<li th:each="discipline : ${disciplines}" class="discipline">
+					<a th:href="@{/discipline/{id}(id=${discipline.id})}" th:text="${discipline.nom}" style="color: white;"></a>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+</div>
 <footer th:replace="general:: footer" ></footer>
 </body>
 </html>
