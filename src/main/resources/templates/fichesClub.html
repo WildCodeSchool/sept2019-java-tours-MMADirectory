@@ -12,7 +12,6 @@
 	<div class="row">
 		<div class="col card border-dark  m-auto" style="max-width: 80%;" >
 
-
 			<h2 class="text-center my-3" style="color: #a59468;" th:text="${fichesClub.name}">name</h2>
 			<div class="card-body ">
 				<img class="card-text logo mt-2" th:src="@{${fichesClub.logo_url}}" style="max-width:100px; width: 100px;position: absolute;top: 0;">
@@ -37,14 +36,16 @@
 						<span class="sr-only">Next</span>
 					</a>
 				</div>
-				<p class="card-subtitle text-muted mt-3" th:text="${fichesClub.address}">address</p>
-				<p class="card-text" th:text="${fichesClub.ville}"></p>
-				<p class="card-text" th:text="${fichesClub.postalCode}"></p>
-				<p class="card-text" th:text="${fichesClub.phoneNumber}"></p>
-				<a class="card-text" th:text="|Site du Club|" target="blank_" th:href="@{${fichesClub.socialUrl}}"></a>
+
+				<a class="card-text btn btn-outline-dark float-right mb-4" th:text="|Visiter sa page|" target="blank_" th:href="@{${fichesClub.socialUrl}}" ></a>
+				<p class="card-subtitle text-muted mt-3" th:text="| Adresse: ${fichesClub.address} ${fichesClub.postalCode} - ${fichesClub.ville}|">address</p>
+
+				<p class="card-text" th:text="| Téléphone : ${fichesClub.phoneNumber}|"></p>
 
 				<p th:text="${fichesClub.description}">description</p>
+
 				<hr>
+				<p class="card-text h5" style="color: #A59468;">Discipline(s) : </p>
 				<ul class="listDiscipline">
 					<li th:each="discipline : ${fichesClub.disciplines}" class="disciplines">
 						<a th:text="${discipline.nom}" th:href="@{/discipline/{id}(id=${discipline.id})}" style="color: white;"></a>
