@@ -52,6 +52,8 @@ public class ClubController {
 		@GetMapping("/club") 
 		public String getClubById(@RequestParam Long id, Model model) { 
 			model.addAttribute("fichesClub", repository.getOne(id));
+
+
 			return "fichesClub"; 
 	}
 
