@@ -28,6 +28,7 @@ public class Club {
 	private String socialUrl;
 	private String postalCode;
 	private String phoneNumber;
+	private boolean valide;
 
 	@Transient
 	private MultipartFile logo;
@@ -203,5 +204,13 @@ public class Club {
 
 	public void setLogo_url(String logo_url) {
 		this.logo_url = logo_url;
+	}
+
+	public boolean isValide() {
+		return valide;
+	}
+
+	public void setValide(boolean valide) {
+		this.valide = valide;
 	}
 }
