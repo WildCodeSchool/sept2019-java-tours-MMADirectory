@@ -99,7 +99,6 @@ footer {
 	right: 0;
 	width: 2%;
 
-
 }
 
 .carousel-control-prev:hover, .carousel-control-next:hover {
@@ -108,11 +107,7 @@ footer {
 }
 
 <<<<<<< HEAD
-.carousel-inner{
-	-webkit-box-shadow: 10px 10px 10px 5px rgba (163,158,163,1);
-	-moz-box-shadow: 10px 10px 10px 5px rgba (163,158,163,1);
-	shadow-box: 10px 10px 10px 5px rgba (163,158,163,1);
-}
+
 
 =======
 #form_valid{
