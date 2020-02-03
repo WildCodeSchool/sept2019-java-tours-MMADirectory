@@ -72,14 +72,23 @@ public class AdminController {
 		public String postClub( @ModelAttribute Club club) {
 			Random rand =  new Random();
 			String logoFilename = "logo." + club.getLogo().getOriginalFilename().split("\\.")[1];
-			String photoFilename = rand.nextInt(5000)+"."+club.getPhoto().getOriginalFilename().split("\\.")[1];
+			String photo1Filename = rand.nextInt(5000)+"."+club.getPhoto1().getOriginalFilename().split("\\.")[1];
+			String photo2Filename = rand.nextInt(5000)+"."+club.getPhoto2().getOriginalFilename().split("\\.")[1];
+			String photo3Filename = rand.nextInt(5000)+"."+club.getPhoto3().getOriginalFilename().split("\\.")[1];
 
 			club.setId(repository.save(club).getId());
 
 			storageService.store(club.getLogo(), logoFilename , club.getId());
 			club.setLogo_url("/files/" + club.getId()+ "/"+ logoFilename);
-			storageService.store(club.getPhoto(),  photoFilename, club.getId());
-			club.setPhoto_url("/files/" + club.getId()+ "/" + photoFilename);
+
+			storageService.store(club.getPhoto1(),  photo1Filename, club.getId());
+			club.setPhoto1_url("/files/" + club.getId()+ "/" + photo1Filename);
+
+			storageService.store(club.getPhoto2(),  photo2Filename, club.getId());
+			club.setPhoto2_url("/files/" + club.getId()+ "/" + photo2Filename);
+
+			storageService.store(club.getPhoto3(),  photo3Filename, club.getId());
+			club.setPhoto3_url("/files/" + club.getId()+ "/" + photo3Filename);
 
 			repository.save(club);
 			return "redirect:/admin";
@@ -112,7 +121,9 @@ public class AdminController {
 		public String postClubUpdate( @ModelAttribute Club club) {
 			Random rand =  new Random();
 			String[] splitedLogoName = club.getLogo().getOriginalFilename().split(".");
-			String splitedPhotoName = rand.nextInt(5000)+"."+club.getPhoto().getOriginalFilename();
+			String splitedPhoto1Name = rand.nextInt(5000)+"."+club.getPhoto1().getOriginalFilename();
+			String splitedPhoto2Name = rand.nextInt(5000)+"."+club.getPhoto2().getOriginalFilename();
+			String splitedPhoto3Name = rand.nextInt(5000)+"."+club.getPhoto3().getOriginalFilename();
 
 			String logoFilename = "logo.";
 
@@ -123,15 +134,30 @@ public class AdminController {
 			}
 
 			String photoFilename = "photo.";
-			if(splitedPhotoName == null || splitedPhotoName.length() <2){
+			if(splitedPhoto1Name == null || splitedPhoto1Name.length() <2){
 				logoFilename += ".png";
 			}else{
-				logoFilename += splitedPhotoName;
+				logoFilename += splitedPhoto1Name;
+			}
+			if(splitedPhoto2Name == null || splitedPhoto2Name.length() <2){
+				logoFilename += ".png";
+			}else{
+				logoFilename += splitedPhoto1Name;
+			}
+			if(splitedPhoto3Name == null || splitedPhoto3Name.length() <2){
+				logoFilename += ".png";
+			}else{
+				logoFilename += splitedPhoto1Name;
 			}
 			storageService.store(club.getLogo(), logoFilename , club.getId());
 			club.setLogo_url("/files/" + club.getId()+ "/"+ logoFilename);
-			storageService.store(club.getPhoto(),  photoFilename, club.getId());
-			club.setPhoto_url("/files/" + club.getId()+ "/" + photoFilename);
+
+			storageService.store(club.getPhoto1(),  photoFilename, club.getId());
+			club.setPhoto1_url("/files/" + club.getId()+ "/" + photoFilename);
+			storageService.store(club.getPhoto2(),  photoFilename, club.getId());
+			club.setPhoto2_url("/files/" + club.getId()+ "/" + photoFilename);
+			storageService.store(club.getPhoto3(),  photoFilename, club.getId());
+			club.setPhoto3_url("/files/" + club.getId()+ "/" + photoFilename);
 
 			repository.save(club);
 			return "redirect:/admin";

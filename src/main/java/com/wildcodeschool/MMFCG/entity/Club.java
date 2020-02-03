@@ -21,8 +21,10 @@ public class Club {
 	private String address;
 	private String ville;
 	private String description;
-	private String photo_url;
+	private String photo1_url;
 	private String logo_url;
+	private String photo2_url;
+	private String photo3_url;
 	private String socialUrl;
 	private String postalCode;
 	private String phoneNumber;
@@ -33,7 +35,13 @@ public class Club {
 	private MultipartFile logo;
 
 	@Transient
-	private MultipartFile photo;
+	private MultipartFile photo1;
+
+	@Transient
+	private MultipartFile photo2;
+
+	@Transient
+	private MultipartFile photo3;
 
 	//Clé étrangère vers la table region
 	@ManyToOne
@@ -70,7 +78,6 @@ public class Club {
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
-	
 
 	public String getSocialUrl() {
 		return socialUrl;
@@ -112,14 +119,6 @@ public class Club {
 		this.address = address;
 	}
 
-	public MultipartFile getLogo() {
-		return logo;
-	}
-
-	public MultipartFile getPhoto() {
-		return photo;
-	}
-
 	public String getDescription() {
 		return description;
 	}
@@ -128,16 +127,13 @@ public class Club {
 		this.description = description;
 	}
 
-
 	public Region getRegion() {
 		return region;
 	}
 
-
 	public void setRegion(Region region) {
 		this.region = region;
 	}
-
 
 	public List<Discipline> getDisciplines() {
 		return disciplines;
@@ -155,12 +151,61 @@ public class Club {
 		this.ville = ville;
 	}
 
-	public String getPhoto_url() {
-		return photo_url;
+	public String getPhoto1_url() {
+		return photo1_url;
 	}
 
-	public void setPhoto_url(String photo_url) {
-		this.photo_url = photo_url;
+	public void setPhoto1_url(String photo1_url) {
+		this.photo1_url = photo1_url;
+	}
+
+	public String getPhoto2_url() {
+		return photo2_url;
+	}
+
+	public void setPhoto2_url(String photo2_url) {
+		this.photo2_url = photo2_url;
+	}
+
+	public String getPhoto3_url() {
+		return photo3_url;
+	}
+
+	public void setPhoto3_url(String photo3_url) {
+		this.photo3_url = photo3_url;
+	}
+
+
+	public MultipartFile getLogo() {
+		return logo;
+	}
+
+	public void setLogo(MultipartFile logo) {
+		this.logo = logo;
+	}
+
+	public MultipartFile getPhoto1() {
+		return photo1;
+	}
+
+	public void setPhoto1(MultipartFile photo1) {
+		this.photo1 = photo1;
+	}
+
+	public MultipartFile getPhoto2() {
+		return photo2;
+	}
+
+	public void setPhoto2(MultipartFile photo2) {
+		this.photo2 = photo2;
+	}
+
+	public MultipartFile getPhoto3() {
+		return photo3;
+	}
+
+	public void setPhoto3(MultipartFile photo3) {
+		this.photo3 = photo3;
 	}
 
 	public String getLogo_url() {
@@ -171,11 +216,11 @@ public class Club {
 		this.logo_url = logo_url;
 	}
 
-	public void setLogo(MultipartFile logo) {
-		this.logo = logo;
+	public boolean isValide() {
+		return valide;
 	}
 
-	public void setPhoto(MultipartFile photo) {
-		this.photo = photo;
+	public void setValide(boolean valide) {
+		this.valide = valide;
 	}
 }
