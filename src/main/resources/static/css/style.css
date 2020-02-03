@@ -107,7 +107,10 @@ footer {
 	width: 6%;
 }
 
-
+#form_valid{
+	display: flex;
+	justify-content: space-around;
+}
 
 @media screen and (max-width: 990px ){
 	.logo{
