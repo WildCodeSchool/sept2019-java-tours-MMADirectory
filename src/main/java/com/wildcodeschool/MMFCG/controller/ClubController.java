@@ -1,19 +1,27 @@
 package com.wildcodeschool.MMFCG.controller;
 
+import com.wildcodeschool.MMFCG.entity.Club;
 import com.wildcodeschool.MMFCG.entity.Discipline;
 import com.wildcodeschool.MMFCG.repository.ClubRepository;
 import com.wildcodeschool.MMFCG.repository.DisciplineRepository;
 import com.wildcodeschool.MMFCG.repository.RegionRepository;
+
+import com.wildcodeschool.MMFCG.storage.StorageFileNotFoundException;
+import com.wildcodeschool.MMFCG.storage.StorageService;
+import javassist.expr.NewArray;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
+import java.util.Random;
 
 
 @Controller
@@ -25,8 +33,10 @@ public class ClubController {
 	private RegionRepository regRepository;
 	@Autowired
 	private DisciplineRepository disciplineRepository;
-	    
-	
+
+	private StorageService storageService;
+
+
 	//Choix de la region
 	@GetMapping("/")
 	public String region(Model model) {
@@ -79,5 +89,8 @@ public class ClubController {
 		}
 		throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Le club n'existe pas !");
 	}
+	
+
+
 	
 }

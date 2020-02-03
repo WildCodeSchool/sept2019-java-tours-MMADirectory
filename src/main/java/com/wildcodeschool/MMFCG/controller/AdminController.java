@@ -40,7 +40,6 @@ public class AdminController {
 
 
     private StorageService storageService;
-	private Strings RandomStringUtils;
 
 	@Autowired
     public void AdminController(StorageService storageService) {
@@ -93,7 +92,6 @@ public class AdminController {
 
 			repository.save(club);
 			return "redirect:/admin";
-
 		}
 
 		//Supprime un club en fonction de son id puis renvoie la liste maj
@@ -165,6 +163,64 @@ public class AdminController {
 			return "redirect:/admin";
 
 		}
+		@GetMapping("/admin/waiting")
+		public String waitingClubs(Model model){
+			model.addAttribute("clubs", repository.findAllFalse());
+			return "waiting_clubs";
+		}
+
+
+		@GetMapping("/admin/valid/{id}")
+		public String getClubValid(@PathVariable long id, Model model){
+		Optional<Club> club = repository.findById(id);
+		if(club.isPresent()){
+			model.addAttribute("club", club.get());
+			return "waiting_club_detail";
+		}
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Le club n'existe pas !");
+		}
+
+		@PostMapping("/admin/valid/{id}")
+		public String postClubValid(@PathVariable long id, @ModelAttribute Club club){
+			club.setValide(true);
+			repository.save(club);
+			return "redirect:/admin/waiting";
+		}
+
+		@GetMapping("/admin/unvalid/{id}")
+		public String unvalidClub(@PathVariable long id){
+			repository.deleteById(id);
+			return "redirect:/admin/waiting";
+		}
+
+		@GetMapping("/register")
+		public String formProposeClub(Model model){
+			model.addAttribute("club", new Club());
+			model.addAttribute("disciplines", disciplineRepository.findAll());
+			model.addAttribute("regions", regRepository.findAll());
+			return "register";
+		}
+
+		@PostMapping("/register")
+		public String postClubRegister(@ModelAttribute Club club){
+			Random rand =  new Random();
+			String logoFilename = "logo." + club.getLogo().getOriginalFilename().split("\\.")[1];
+			String photoFilename = rand.nextInt(5000)+"."+club.getPhoto().getOriginalFilename().split("\\.")[1];
+
+			club.setId(repository.save(club).getId());
+
+			storageService.store(club.getLogo(), logoFilename , club.getId());
+			club.setLogo_url("/files/" + club.getId()+ "/"+ logoFilename);
+			storageService.store(club.getPhoto(),  photoFilename, club.getId());
+			club.setPhoto_url("/files/" + club.getId()+ "/" + photoFilename);
+			repository.save(club);
+			return "valide";
+		}
+
+
+
+
+
 
 	    @ExceptionHandler(StorageFileNotFoundException.class)
 	    public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
@@ -178,5 +234,7 @@ public class AdminController {
 	        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
 	                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
 	    }
+
+
 
 }
