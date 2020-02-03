@@ -107,12 +107,19 @@ footer {
 	width: 2%;
 }
 
+<<<<<<< HEAD
 .carousel-inner{
 	-webkit-box-shadow: 10px 10px 10px 5px rgba (163,158,163,1);
 	-moz-box-shadow: 10px 10px 10px 5px rgba (163,158,163,1);
 	shadow-box: 10px 10px 10px 5px rgba (163,158,163,1);
 }
 
+=======
+#form_valid{
+	display: flex;
+	justify-content: space-around;
+}
+>>>>>>> 03af102770c0ca5c427d62e67f585b7d47713c43
 
 @media screen and (max-width: 990px ){
 	.logo{

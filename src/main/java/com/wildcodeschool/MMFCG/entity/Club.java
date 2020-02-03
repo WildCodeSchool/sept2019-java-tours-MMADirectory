@@ -30,6 +30,7 @@ public class Club {
 	private String phoneNumber;
 	private boolean valide;
 
+	
 	@Transient
 	private MultipartFile logo;
 
@@ -61,6 +62,8 @@ public class Club {
 	}
 
 	//Getter & Setter
+	
+
 	public String getPostalCode() {
 		return postalCode;
 	}

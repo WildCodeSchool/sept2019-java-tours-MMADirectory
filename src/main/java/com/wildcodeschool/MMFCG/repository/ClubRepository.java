@@ -12,10 +12,12 @@ import java.util.List;
 @Repository
 public interface ClubRepository extends JpaRepository<Club, Long>{
 	
-	@Query("SELECT c FROM Club c WHERE fk_region_id=:region")
+	@Query("SELECT c FROM Club c WHERE fk_region_id=:region AND valide = true")
 	public List<Club> findByRegion(@Param("region")int region);
 
-	@Query("SELECT c FROM Club c WHERE name LIKE %:name% OR ville LIKE %:name%")
+	@Query("SELECT c FROM Club c WHERE name LIKE %:name% OR ville LIKE %:name% AND valide = true")
 	public List<Club> findByName(@Param("name")String name);
 
+	@Query("SELECT c FROM Club c WHERE valide=false")
+    public List<Club> findAllFalse();
 }
