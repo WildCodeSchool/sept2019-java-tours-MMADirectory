@@ -6,11 +6,15 @@ import com.wildcodeschool.MMFCG.repository.ClubRepository;
 import com.wildcodeschool.MMFCG.repository.DisciplineRepository;
 import com.wildcodeschool.MMFCG.repository.RegionRepository;
 
+import com.wildcodeschool.MMFCG.storage.StorageFileNotFoundException;
 import com.wildcodeschool.MMFCG.storage.StorageService;
 import javassist.expr.NewArray;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -84,19 +88,7 @@ public class ClubController {
 		throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Le club n'existe pas !");
 	}
 	
-	@GetMapping("/register")
-	public String formProposeClub(Model model){
-		model.addAttribute("club", new Club());
-		model.addAttribute("disciplines", disciplineRepository.findAll());
-		model.addAttribute("regions", regRepository.findAll());
-		return "register";
-	}
 
-	@PostMapping("/register")
-	public String postClubRegister(@ModelAttribute Club club){
-		repository.save(club);
-		return "valide";
 
-	}
 	
 }

@@ -167,7 +167,29 @@ public class AdminController {
 			return "redirect:/admin/waiting";
 		}
 
+		@GetMapping("/register")
+		public String formProposeClub(Model model){
+			model.addAttribute("club", new Club());
+			model.addAttribute("disciplines", disciplineRepository.findAll());
+			model.addAttribute("regions", regRepository.findAll());
+			return "register";
+		}
 
+		@PostMapping("/register")
+		public String postClubRegister(@ModelAttribute Club club){
+			Random rand =  new Random();
+			String logoFilename = "logo." + club.getLogo().getOriginalFilename().split("\\.")[1];
+			String photoFilename = rand.nextInt(5000)+"."+club.getPhoto().getOriginalFilename().split("\\.")[1];
+
+			club.setId(repository.save(club).getId());
+
+			storageService.store(club.getLogo(), logoFilename , club.getId());
+			club.setLogo_url("/files/" + club.getId()+ "/"+ logoFilename);
+			storageService.store(club.getPhoto(),  photoFilename, club.getId());
+			club.setPhoto_url("/files/" + club.getId()+ "/" + photoFilename);
+			repository.save(club);
+			return "valide";
+		}
 
 
 
