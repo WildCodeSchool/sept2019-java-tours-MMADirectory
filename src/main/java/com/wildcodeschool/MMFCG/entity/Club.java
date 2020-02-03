@@ -63,13 +63,6 @@ public class Club {
 
 	//Getter & Setter
 	
-	public boolean isValide() {
-		return valide;
-	}
-
-	public void setValide(boolean valide) {
-		this.valide = valide;
-	}
 
 	public String getPostalCode() {
 		return postalCode;
