@@ -25,8 +25,9 @@ Change the user_name and password in the application.properties' file
 Now you can use the application !
 
 
---Application Properties--
-// Informations sur la BDD à exploiter
+### --Application Properties--
+
+Informations sur la BDD à exploiter
 // ajouter "?serverTimezone=GMT" à l'url est obligatoire pour MySQL 5
 spring.datasource.url=jdbc:mysql://localhost:3306/mfcg?serverTimezone=GMT
 spring.datasource.username=mfcg
