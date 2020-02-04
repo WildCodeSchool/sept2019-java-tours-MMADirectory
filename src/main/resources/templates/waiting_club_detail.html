@@ -12,7 +12,6 @@
 	<div class="row">
 		<div class="col card border-dark  m-auto" style="max-width: 80%;" >
 
-
 			<h2 class="text-center my-3" style="color: #a59468;" th:text="${club.name}">name</h2>
 			<div class="card-body ">
 				<img class="card-text logo mt-2" th:src="@{${club.logo_url}}" style="max-width:100px; width: 100px;position: absolute;top: 0;">
@@ -38,11 +37,12 @@
 					</a>
 				</div>
 
-				<p class="card-subtitle text-muted mt-3" th:text="${club.address}">address</p>
-				<p class="card-text" th:text="${club.ville}"></p>
-				<p class="card-text" th:text="${club.postalCode}"></p>
-				<p class="card-text" th:text="${club.phoneNumber}"></p>
-				<a class="card-text" th:text="|Site du Club|" target="blank_" th:href="@{${club.socialUrl}}"></a>
+				<a th:if="${#strings.length(club.socialUrl)>0}" class="card-text btn btn-outline-dark float-right mb-4" th:text="|Visiter sa page|" target="blank_" th:href="@{${club.socialUrl}}" ></a>
+
+				<p class="card-subtitle text-muted mt-3" th:text="| Adresse: ${club.address} ${club.postalCode} - ${club.ville}|">address</p>
+
+				<p class="card-text" th:text="| Téléphone : ${club.phoneNumber}|"></p>
+
 				<p th:text="${club.description}">description</p>
 				<hr>
 				<ul class="listDiscipline">
