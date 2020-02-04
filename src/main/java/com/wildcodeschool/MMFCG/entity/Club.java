@@ -3,6 +3,7 @@ package com.wildcodeschool.MMFCG.entity;
 
 import com.wildcodeschool.MMFCG.entity.Discipline;
 import com.wildcodeschool.MMFCG.entity.Region;
+import org.springframework.lang.Nullable;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
@@ -21,10 +22,14 @@ public class Club {
 	private String address;
 	private String ville;
 	private String description;
+
+	@Column(columnDefinition = "String default 'https://via.placeholder.com/840x470'" )
 	private String photo1_url;
 	private String logo_url;
 	private String photo2_url;
 	private String photo3_url;
+
+	@Nullable
 	private String socialUrl;
 	private String postalCode;
 	private String phoneNumber;

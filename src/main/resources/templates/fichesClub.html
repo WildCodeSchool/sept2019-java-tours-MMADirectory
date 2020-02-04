@@ -36,8 +36,8 @@
 						<span class="sr-only">Next</span>
 					</a>
 				</div>
+				<a th:if="${#strings.length(fichesClub.socialUrl)>0}" class="card-text btn btn-outline-dark float-right mb-4" th:text="|Visiter sa page|" target="blank_" th:href="@{${fichesClub.socialUrl}}" ></a>
 
-				<a class="card-text btn btn-outline-dark float-right mb-4" th:text="|Visiter sa page|" target="blank_" th:href="@{${fichesClub.socialUrl}}" ></a>
 				<p class="card-subtitle text-muted mt-3" th:text="| Adresse: ${fichesClub.address} ${fichesClub.postalCode} - ${fichesClub.ville}|">address</p>
 
 				<p class="card-text" th:text="| Téléphone : ${fichesClub.phoneNumber}|"></p>
@@ -55,7 +55,7 @@
 		</div>
 	</div>
 		
-        
+	</div>
          <footer th:replace="general :: footer"></footer>
 
 	</body>
