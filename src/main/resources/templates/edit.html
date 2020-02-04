@@ -34,9 +34,10 @@
             </table>
             <br>
         </div>
-    </div>
-    <div class="add_club">
-        <a class="btn" th:href="@{/admin/edit}" style="font-size: 2rem;color: #a59468;">Ajouter un club <i class="fas fa-plus"></i></a>
+    </div> 
+    <div class="add_club d-flex justify-content-between m-auto">
+        <a class="btn btn-outline-secondary" th:href="@{/admin/edit}" style="font-size: 1.5rem;">Ajouter un club <i class="fas fa-plus"></i></a>
+    	<a class="btn btn-outline-dark" th:href="@{/admin/waiting}" style="font-size: 1.5rem;">Club à valider <i class="fas fa-arrow-right"></i></a>
     </div>
 </div>
 <footer th:replace="general:: footer" ></footer>

@@ -3,7 +3,6 @@ package com.wildcodeschool.MMFCG.entity;
 
 import com.wildcodeschool.MMFCG.entity.Discipline;
 import com.wildcodeschool.MMFCG.entity.Region;
-import org.springframework.lang.Nullable;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
@@ -22,31 +21,14 @@ public class Club {
 	private String address;
 	private String ville;
 	private String description;
-
-	@Column(columnDefinition = "String default 'https://via.placeholder.com/840x470'" )
-	private String photo1_url;
+	private String photo_url;
 	private String logo_url;
-	private String photo2_url;
-	private String photo3_url;
 
-	@Nullable
-	private String socialUrl;
-	private String postalCode;
-	private String phoneNumber;
-	private boolean valide;
-
-	
 	@Transient
 	private MultipartFile logo;
 
 	@Transient
-	private MultipartFile photo1;
-
-	@Transient
-	private MultipartFile photo2;
-
-	@Transient
-	private MultipartFile photo3;
+	private MultipartFile photo;
 
 	//Clé étrangère vers la table region
 	@ManyToOne
@@ -67,32 +49,6 @@ public class Club {
 	}
 
 	//Getter & Setter
-	
-
-	public String getPostalCode() {
-		return postalCode;
-	}
-
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
-
-	public String getSocialUrl() {
-		return socialUrl;
-	}
-
-	public void setSocialUrl(String socialUrl) {
-		this.socialUrl = socialUrl;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-	
 	public Long getId() {
 		return id;
 	}
@@ -117,6 +73,14 @@ public class Club {
 		this.address = address;
 	}
 
+	public MultipartFile getLogo() {
+		return logo;
+	}
+
+	public MultipartFile getPhoto() {
+		return photo;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -125,13 +89,16 @@ public class Club {
 		this.description = description;
 	}
 
+
 	public Region getRegion() {
 		return region;
 	}
 
+
 	public void setRegion(Region region) {
 		this.region = region;
 	}
+
 
 	public List<Discipline> getDisciplines() {
 		return disciplines;
@@ -149,61 +116,12 @@ public class Club {
 		this.ville = ville;
 	}
 
-	public String getPhoto1_url() {
-		return photo1_url;
+	public String getPhoto_url() {
+		return photo_url;
 	}
 
-	public void setPhoto1_url(String photo1_url) {
-		this.photo1_url = photo1_url;
-	}
-
-	public String getPhoto2_url() {
-		return photo2_url;
-	}
-
-	public void setPhoto2_url(String photo2_url) {
-		this.photo2_url = photo2_url;
-	}
-
-	public String getPhoto3_url() {
-		return photo3_url;
-	}
-
-	public void setPhoto3_url(String photo3_url) {
-		this.photo3_url = photo3_url;
-	}
-
-
-	public MultipartFile getLogo() {
-		return logo;
-	}
-
-	public void setLogo(MultipartFile logo) {
-		this.logo = logo;
-	}
-
-	public MultipartFile getPhoto1() {
-		return photo1;
-	}
-
-	public void setPhoto1(MultipartFile photo1) {
-		this.photo1 = photo1;
-	}
-
-	public MultipartFile getPhoto2() {
-		return photo2;
-	}
-
-	public void setPhoto2(MultipartFile photo2) {
-		this.photo2 = photo2;
-	}
-
-	public MultipartFile getPhoto3() {
-		return photo3;
-	}
-
-	public void setPhoto3(MultipartFile photo3) {
-		this.photo3 = photo3;
+	public void setPhoto_url(String photo_url) {
+		this.photo_url = photo_url;
 	}
 
 	public String getLogo_url() {
@@ -214,11 +132,11 @@ public class Club {
 		this.logo_url = logo_url;
 	}
 
-	public boolean isValide() {
-		return valide;
+	public void setLogo(MultipartFile logo) {
+		this.logo = logo;
 	}
 
-	public void setValide(boolean valide) {
-		this.valide = valide;
+	public void setPhoto(MultipartFile photo) {
+		this.photo = photo;
 	}
 }

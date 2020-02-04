@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600|Open+Sans:300,400,600|Oswald:300,400,500&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Michroma&display=swap');
+
 html {
 	height: 100%;
 }
@@ -89,7 +90,6 @@ footer {
 	text-align: center;
 	width: 11rem;
 	font-family: 'Michroma', sans-serif;
-	letter-spacing: .2rem;
 
 }
 .imgSlide{
@@ -99,6 +99,9 @@ footer {
 	max-width: 100%;
 }
 
+.jumbotron{
+	background-color: white;
+}
 #img_error{
 	margin: auto;
 	width: 20rem;
@@ -115,15 +118,11 @@ footer {
 	width: 2%;
 }
 
-<<<<<<< HEAD
 
-
-=======
 #form_valid{
 	display: flex;
 	justify-content: space-around;
 }
->>>>>>> 03af102770c0ca5c427d62e67f585b7d47713c43
 
 @media screen and (max-width: 990px ){
 	.logo{
