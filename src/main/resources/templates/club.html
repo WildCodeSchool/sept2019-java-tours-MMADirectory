@@ -44,7 +44,7 @@
 
     <label for="club-discipline" class="col col-form-label ">Disciplines :</label>
     <ul class="d-lg-flex justify-content-around flex-row" name="discipline" id="club-discipline">
-        <li  th:each="discipline : ${disciplines}">
+        <li  th:each="discipline : ${disciplines}" style="margin-right: 2rem;">
             <input class="form-check-input" type="checkbox" th:text="${discipline.nom}" th:value="${discipline.id}" th:field="*{disciplines}"></li>
     </ul>
 
