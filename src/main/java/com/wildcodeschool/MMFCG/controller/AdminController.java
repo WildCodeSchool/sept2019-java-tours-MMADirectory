@@ -244,31 +244,67 @@ public class AdminController {
 
 		@PostMapping("/register")
 		public String postClubRegister(@ModelAttribute Club club){
-			Random rand =  new Random();
-			String logoFilename = "logo." + club.getLogo().getOriginalFilename().split("\\.")[1];
-			String photo1Filename = rand.nextInt(5000)+"."+club.getPhoto1().getOriginalFilename().split("\\.")[1];
-			String photo2Filename = rand.nextInt(5000)+"."+club.getPhoto2().getOriginalFilename().split("\\.")[1];
-			String photo3Filename = rand.nextInt(5000)+"."+club.getPhoto3().getOriginalFilename().split("\\.")[1];
+			Random rand = new Random();
+			if(!club.getLogo().isEmpty()){
+				String logoFilename = "logo." + club.getLogo().getOriginalFilename().split("\\.")[1];
+				club.setId(repository.save(club).getId());
 
-			club.setId(repository.save(club).getId());
+				storageService.store(club.getLogo(), logoFilename, club.getId());
+				club.setLogo_url("/files/" + club.getId() + "/" + logoFilename);
+			}
 
-			storageService.store(club.getLogo(), logoFilename , club.getId());
-			club.setLogo_url("/files/" + club.getId()+ "/"+ logoFilename);
+			if(!club.getPhoto1().isEmpty() && !club.getPhoto2().isEmpty() && !club.getPhoto3().isEmpty()) {
+				String photo1Filename = rand.nextInt(5000) + "." + club.getPhoto1().getOriginalFilename().split("\\.")[1];
+				String photo2Filename = rand.nextInt(5000) + "." + club.getPhoto2().getOriginalFilename().split("\\.")[1];
+				String photo3Filename = rand.nextInt(5000) + "." + club.getPhoto3().getOriginalFilename().split("\\.")[1];
 
-			storageService.store(club.getPhoto1(),  photo1Filename, club.getId());
-			club.setPhoto1_url("/files/" + club.getId()+ "/" + photo1Filename);
+				club.setId(repository.save(club).getId());
 
-			storageService.store(club.getPhoto2(),  photo2Filename, club.getId());
-			club.setPhoto2_url("/files/" + club.getId()+ "/" + photo2Filename);
+				storageService.store(club.getPhoto1(), photo1Filename, club.getId());
+				club.setPhoto1_url("/files/" + club.getId() + "/" + photo1Filename);
 
-			storageService.store(club.getPhoto3(),  photo3Filename, club.getId());
-			club.setPhoto3_url("/files/" + club.getId()+ "/" + photo3Filename);
+				storageService.store(club.getPhoto2(), photo2Filename, club.getId());
+				club.setPhoto2_url("/files/" + club.getId() + "/" + photo2Filename);
+
+				storageService.store(club.getPhoto3(), photo3Filename, club.getId());
+				club.setPhoto3_url("/files/" + club.getId() + "/" + photo3Filename);
+			}
+
+			if(!club.getPhoto1().isEmpty()){
+				club.setId(repository.save(club).getId());
+
+				String photo1Filename = rand.nextInt(5000) + "." + club.getPhoto1().getOriginalFilename().split("\\.")[1];
+				storageService.store(club.getPhoto1(), photo1Filename, club.getId());
+				club.setPhoto1_url("/files/" + club.getId() + "/" + photo1Filename);
+			}
+			else{
+				club.setPhoto1_url("https://via.placeholder.com/840x470");
+			}
+
+			if(!club.getPhoto2().isEmpty()){
+				club.setId(repository.save(club).getId());
+
+				String photo2Filename = rand.nextInt(5000) + "." + club.getPhoto2().getOriginalFilename().split("\\.")[1];
+				storageService.store(club.getPhoto2(), photo2Filename, club.getId());
+				club.setPhoto2_url("/files/" + club.getId() + "/" + photo2Filename);
+			}
+			else{
+				club.setPhoto2_url("https://via.placeholder.com/840x470");
+			}
+
+			if(!club.getPhoto3().isEmpty()){
+				club.setId(repository.save(club).getId());
+
+				String photo3Filename = rand.nextInt(5000) + "." + club.getPhoto3().getOriginalFilename().split("\\.")[1];
+				storageService.store(club.getPhoto3(), photo3Filename, club.getId());
+				club.setPhoto3_url("/files/" + club.getId() + "/" + photo3Filename);
+			}
+			else{
+				club.setPhoto3_url("https://via.placeholder.com/840x470");
+			}
 			repository.save(club);
 			return "valide";
 		}
-
-
-
 
 
 
