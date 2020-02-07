@@ -119,6 +119,7 @@ footer {
 }
 
 
+
 #form_valid{
 	display: flex;
 	justify-content: space-around;
@@ -136,4 +137,11 @@ footer {
 	#titre{
 		display: none;
 	}
+
+	.imgSlide{
+
+		width : 100rem;
+		max-height: 250px;
+	}
+
 }
